@@ -52,3 +52,8 @@
 .fa-ellipsis-h {
     color: rgb(223, 223, 223);
 }
+#guess {
+    width: 50%;
+    font-size: 50px;
+    text-align: center;
+}

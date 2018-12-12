@@ -30,11 +30,17 @@ export default {
         if (_input.value == this.current.en){
           console.log(true);
           _input.style.backgroundColor = 'lightgreen';
-          _input.value = '';
+          _input.style.color = 'white';
           setTimeout((src, item) => {
+            _input.value = '';
             _input.style.backgroundColor = 'white';
-            this.current = this.next();
-          }, 1000);
+            _input.style.color = 'black';
+            if (this.words.length == 0){
+              _input.disabled = true;
+              this.current.ko='끝';
+            }
+            else this.current = this.next();
+          }, 500);
         }
       },
       shuffle: function (array) {
