@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "name": "First",
+        "words": [
+            { "en": "dimigo", "ko": ["디미고", "한국디지털미디어고등학교"] }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Test",
+        "words": [
+            { "en": "provide", "ko": ["공급하다", "준비하다"] },
+            { "en": "develop", "ko": ["개발하다", "발달하다"] },
+            { "en": "service", "ko": ["서비스", "봉사"] },
+            { "en": "inform", "ko": ["알리다", "통지하다"] },
+            { "en": "relationship", "ko": ["관계"] }
+        ]
+    }
+]

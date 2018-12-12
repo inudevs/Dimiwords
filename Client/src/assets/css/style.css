@@ -1,0 +1,21 @@
+#dimigo-logo {
+    width: 120px;
+    height: auto;
+}
+.wordbook {
+    margin-bottom: 10px;
+}
+.wordbook .header {
+    margin-bottom: 10px;
+}
+.wordbook .title {
+    color: #FC6767;
+    font-size: 30px;
+}
+.wordbook .word {
+    color: black;
+    border: 2px solid #EC008C;
+    border-radius: 15px;
+    padding: 3.5px;
+    /* margin-top:  */
+}
