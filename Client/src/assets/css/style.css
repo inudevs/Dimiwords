@@ -2,20 +2,53 @@
     width: 120px;
     height: auto;
 }
+.link {
+    text-decoration: none;
+}
+.wordbooks {
+    text-align: center;
+}
 .wordbook {
+    display: inline-block;
+    width: 75%;
+    padding: 3px;
     margin-bottom: 10px;
+    background: none;
+    border: 7px solid transparent;
+    border-image: linear-gradient(to left, #EC008C, #FC6767);
+    border-image-slice: 1;
 }
 .wordbook .header {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 .wordbook .title {
-    color: #FC6767;
-    font-size: 30px;
+    color: #EC008C;
+    background: -webkit-linear-gradient(135deg, #EC008C, #FC6767);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 32px;
+    text-decoration: none;
+}
+.wordbook .words {
+    margin-bottom: 5px;
 }
 .wordbook .word {
-    color: black;
+    display: inline-block;
+    color: #EC008C;
+    font-weight: 450;
     border: 2px solid #EC008C;
     border-radius: 15px;
     padding: 3.5px;
-    /* margin-top:  */
+    margin-bottom: 5px;
+    text-decoration: none;
+}
+.wordbook .word:hover {
+    color: white;
+    background: #ec008c; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ec008c, #fc6767); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ec008c, #fc6767);
+}
+.fa-ellipsis-h {
+    color: rgb(223, 223, 223);
 }

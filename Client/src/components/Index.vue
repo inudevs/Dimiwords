@@ -1,16 +1,20 @@
 <template>
   <div class="wordbooks">
     <h1>단어장 목록</h1>
-    <div v-for="wordbook in words" class="wordbook">
-      <div class="header">
-        <strong class="title">{{ wordbook.name }}</strong>
-        <router-link :to="{ name: 'wordbook', params: { id: wordbook.id }}">더보기</router-link>
-      </div>
-      <div>
-        <span v-for="word in wordbook.words" class="words">
-          <span class="word">{{ word.en }}</span>&nbsp;
-        </span>
-      </div>
+    <div v-for="wordbook in words" class="wordbook rounded-corners-gradient-borders">
+      <router-link :to="{ name: 'show', params: { id: wordbook.id }}" class="link">
+        <div class="header">
+          <strong class="title">{{ wordbook.name }}</strong>
+        </div>
+        <div class="words">
+          <span v-for="word in wordbook.words">
+            <a class="word" href="#">{{ word.en }}</a>&nbsp;
+          </span>
+          <router-link :to="{ name: 'show', params: { id: wordbook.id }}">
+            <i class="fas fa-ellipsis-h"></i>
+          </router-link>
+        </div>
+      </router-link>
     </div>
   </div>
 </template>
