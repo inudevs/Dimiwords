@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Yeon+Sung');
+input:focus, textarea:focus, select:focus {
+    outline: none;
+}
 #dimigo-logo {
     width: 120px;
     height: auto;
@@ -57,6 +60,7 @@
     width: 50%;
     font-size: 50px;
     text-align: center;
+    border: 5px rgb(37, 37, 37) dotted;
     border-radius: 0.4rem;
 }
 #progress {
@@ -88,4 +92,10 @@
     font-size: 50px;
     font-weight: 200;
     font-family: 'Yeon Sung', cursive;
+}
+.fas fa-redo {
+
+}
+.fas fa-bars {
+
 }

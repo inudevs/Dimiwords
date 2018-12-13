@@ -8,7 +8,7 @@
     <div id="progress">
       <div id="bar"><span id="time">{{ (progress.current/progress.all || 0)*100 + '%' }}</span></div>
     </div>
-    <input id="guess" v-on:keyup="key">
+    <input id="guess" v-if="running" v-on:keyup="key">
     <div v-if="!running">
       <i class="fas fa-redo"></i>
       <i class="fas fa-bars"></i>
@@ -49,13 +49,15 @@ export default {
           // console.log(true)
           _input.value = this.current.en;
           _input.disabled = true;
-          _input.style.backgroundColor = 'lightgreen';
+          _input.style.backgroundImage = 'linear-gradient(to right, #348f50, #56b4d3)';
+          _input.style.borderColor = 'white';
           _input.style.color = 'white';
           setTimeout((src, item) => {
             _input.value = '';
             _input.disabled = false;
             _input.focus();
-            _input.style.backgroundColor = 'white';
+            _input.style.backgroundImage = 'none';
+            _input.style.borderColor = 'rgb(37, 37, 37)';
             _input.style.color = 'black';
             this.move();
             this.progress.current++;
