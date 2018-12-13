@@ -10,8 +10,10 @@
     </div>
     <input id="guess" v-if="running" v-on:keyup="key">
     <div v-if="!running">
-      <i class="fas fa-redo"></i>
-      <i class="fas fa-bars"></i>
+      <i class="fas fa-redo fa-3x" v-on:click="go"></i>
+      <router-link :to="{ name: 'index' }" class="link">
+        <i class="fas fa-bars fa-3x"></i>
+      </router-link>
     </div>
   </div>
 </template>
@@ -46,19 +48,16 @@ export default {
       key: function(event) {
         var _input = document.getElementById('guess');
         if (_input.value.toLowerCase() == this.current.en){
-          // console.log(true)
           _input.value = this.current.en;
           _input.disabled = true;
-          _input.style.backgroundImage = 'linear-gradient(to right, #348f50, #56b4d3)';
-          _input.style.borderColor = 'white';
-          _input.style.color = 'white';
+          _input.style.borderStyle = 'solid';
+          _input.style.borderColor = '#EC008C';
           setTimeout((src, item) => {
             _input.value = '';
             _input.disabled = false;
             _input.focus();
-            _input.style.backgroundImage = 'none';
+            _input.style.borderStyle = 'dotted';
             _input.style.borderColor = 'rgb(37, 37, 37)';
-            _input.style.color = 'black';
             this.move();
             this.progress.current++;
             if (this.words.length == 0){
@@ -93,6 +92,9 @@ export default {
             // console.log(this.progress)
           }
         }, 100);
+      },
+      go: function () {
+        this.$router.go();
       }
   }
 }
