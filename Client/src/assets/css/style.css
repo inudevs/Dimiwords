@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Yeon+Sung');
 #dimigo-logo {
     width: 120px;
     height: auto;
@@ -56,4 +57,35 @@
     width: 50%;
     font-size: 50px;
     text-align: center;
+    border-radius: 0.4rem;
+}
+#progress {
+    display: inline-block;
+    width: 80%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: rgb(165, 165, 165);
+}
+#time {
+    color: white;
+    font-weight: 200;
+    font-family: 'Yeon Sung', cursive;
+    display:table-cell;
+    vertical-align:middle;
+    /* padding-right: 7px; */
+    padding: 7px;
+}
+#bar {
+    display:table;
+    width: 1%;
+    height: 30px;
+    background-color: #EC008C;
+    background: linear-gradient(to left, #EC008C, #FC6767);
+    text-align: right;
+}
+#question {
+    color: black;
+    font-size: 50px;
+    font-weight: 200;
+    font-family: 'Yeon Sung', cursive;
 }
