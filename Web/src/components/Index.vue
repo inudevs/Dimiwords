@@ -19,6 +19,9 @@
     <div v-if="!Object.keys(words).length">
       <span>단어장이 없어요!</span>
     </div>
+    <router-link :to="{ name: 'new_wordbook' }" class="link new-wordbook">
+      단어장 추가하기
+    </router-link>
   </div>
 </template>
 

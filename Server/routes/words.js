@@ -2,11 +2,10 @@ var express = require('express');
 var router = express.Router();
 var Word = require('../models/words.js')
 
-router.get('/:id', function (req, res, next) { // list of words in word pack
-    var id = req.params.id;
-    Word.findById(id, function (error, wordbook) {
+router.get('/', function (req, res, next) { // list of all words
+    Word.find({}, function (error, words) {
         if (error) { console.error(error); }
-        res.send({wordbook})
+        res.send({words})
     }).sort({_id:-1})
 });
 

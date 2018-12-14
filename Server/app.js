@@ -1,11 +1,14 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var bodyParser = require('body-parser');
 
 var indexRouter = require('./routes/index');
 var wordsRouter = require('./routes/words');
+var wordbookRouter = require('./routes/wordbook');
+var newWordRouter = require('./routes/newWord');
+var newWordbookRouter = require('./routes/newWordbook');
 
 var app = express();
 
@@ -13,14 +16,17 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+
+app.use(logger('dev'));;
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api', indexRouter);
-app.use('/api/words', wordsRouter);
+app.use('/api', indexRouter); // /api
+app.use('/api/words', wordsRouter); // /api/words
+app.use('/api', wordbookRouter); // /api/{id}
+app.use('/api/new', newWordRouter) // /api/new/word
+app.use('/api/new', newWordbookRouter) // /api/new/wordbook
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -38,8 +44,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
-
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/words', { useNewUrlParser: true });
 
@@ -50,3 +54,5 @@ db.on("error", console.error.bind(console, "connection error"));
 db.once("open", function(callback){
   console.log("Connection Succeeded");
 });
+
+module.exports = app;
