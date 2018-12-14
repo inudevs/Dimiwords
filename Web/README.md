@@ -1,4 +1,4 @@
-# dimiwords-client
+# dimiwords-web
 
 > A Vue.js project
 
