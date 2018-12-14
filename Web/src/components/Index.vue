@@ -16,6 +16,9 @@
         </div>
       </router-link>
     </div>
+    <div v-if="!Object.keys(words).length">
+      <span>단어장이 없어요!</span>
+    </div>
   </div>
 </template>
 
@@ -24,7 +27,7 @@ export default {
   created () {
     this.$http.get('/api')
     .then((response) => {
-      this.words = response.data
+      this.words = response.data.wordbooks
     })
   },
   data () {

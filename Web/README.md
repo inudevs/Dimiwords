@@ -1,4 +1,4 @@
-# dimiwords-web
+# Dimiwords-Web
 
 > A Vue.js project
 
