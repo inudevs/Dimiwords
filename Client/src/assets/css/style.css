@@ -49,8 +49,8 @@ input:focus, textarea:focus, select:focus {
 }
 .wordbook .word:hover {
     color: white;
-    background: #EC008c; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #EC008c, #fc6767); /* Chrome 10-25, Safari 5.1-6 */
+    background: #EC008c;
+    background: -webkit-linear-gradient(to right, #EC008c, #fc6767);
     background: linear-gradient(to right, #EC008c, #fc6767);
 }
 .fa-ellipsis-h {
@@ -76,7 +76,6 @@ input:focus, textarea:focus, select:focus {
     font-family: 'Yeon Sung', cursive;
     display:table-cell;
     vertical-align:middle;
-    /* padding-right: 7px; */
     padding: 7px;
 }
 #bar {

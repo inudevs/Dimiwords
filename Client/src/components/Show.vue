@@ -10,7 +10,7 @@
     </div>
     <input id="guess" v-if="running" v-on:keyup="key">
     <div v-if="!running">
-      <i class="fas fa-redo fa-3x" v-on:click="go"></i>
+      <i class="fas fa-redo fa-3x" v-on:click="refresh"></i>
       <router-link :to="{ name: 'index' }" class="link">
         <i class="fas fa-bars fa-3x"></i>
       </router-link>
@@ -93,7 +93,7 @@ export default {
           }
         }, 100);
       },
-      go: function () {
+      refresh: function () {
         this.$router.go();
       }
   }
