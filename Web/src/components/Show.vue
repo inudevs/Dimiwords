@@ -22,10 +22,10 @@
 export default {
   created: function () {
     var id = this.$route.params.id;
-    this.$http.get(`/api/words/${id}`)
+    this.$http.get(`/api/${id}`)
     .then((response) => {
-      this.wordbook = response.data;
-      this.words = this.wordbook[0].words;
+      this.wordbook = response.data.wordbook;
+      this.words = this.wordbook.words;
       this.progress.all = this.words.length;
       this.progress.current = 0;
       this.current = this.next();

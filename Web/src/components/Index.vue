@@ -2,15 +2,16 @@
   <div class="wordbooks">
     <h1>단어장 목록</h1>
     <div v-for="wordbook in words" class="wordbook rounded-corners-gradient-borders">
-      <router-link :to="{ name: 'show', params: { id: wordbook.id }}" class="link">
+      <router-link :to="{ name: 'show', params: { id: wordbook._id }}" class="link">
         <div class="header">
           <strong class="title">{{ wordbook.name }}</strong>
+          <p>{{ wordbook.intro }}</p>
         </div>
         <div class="words">
           <span v-for="word in wordbook.words">
             <a class="word" href="#">{{ word.en }}</a>&nbsp;
           </span>
-          <router-link :to="{ name: 'show', params: { id: wordbook.id }}">
+          <router-link :to="{ name: 'show', params: { id: wordbook._id }}">
             <i class="fas fa-ellipsis-h"></i>
           </router-link>
         </div>

@@ -211,3 +211,19 @@ input[type=checkbox]{
     color: white;
     background: #FC6767;
 }
+.wordbook-info {
+    width: 100%;
+}
+.wordbook-info input {
+    color: black;
+    font-size: 20px;
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 3px #EC008C solid;
+    border-radius: 10px;
+}
+.wordbook-info input::placeholder {
+    color: #EC008C;
+    font-size: 20px;
+}
