@@ -45,3 +45,14 @@ API server of Dimiwords
 | `/api/{id}` | `id`를 가지는 `wordbook`의 정보를 반환한다. |
 | `/api/new/word` | 전달받은 데이터로 새로운 `word`을 만든다. |
 | `/api/new/wordbook` | 전달받은 데이터로 새로운 `wordbook`을 만든다. |
+
+## secret.json 
+```json
+{
+    "mongo": "mongodb://localhost:27017/words"
+}
+```
+
+- `mongo`: mongo connection string
+
+위 형식으로 mongo connection string을 포함하는 `secret.json` 파일을 만들어 두어야 한다.

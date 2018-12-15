@@ -10,6 +10,8 @@ var wordbookRouter = require('./routes/wordbook');
 var newWordRouter = require('./routes/newWord');
 var newWordbookRouter = require('./routes/newWordbook');
 
+var secret = require('./secret.json');
+
 var app = express();
 
 // view engine setup
@@ -45,7 +47,7 @@ app.use(function(err, req, res, next) {
 });
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/words', { useNewUrlParser: true });
+mongoose.connect(secret.mongo, { useNewUrlParser: true });
 
 var db = mongoose.connection;
 
