@@ -153,7 +153,7 @@ export default {
         console.log(response);
         if (response.data.success) alert('단어장을 추가했습니다.');
         else alert('단어장을 추가하는 도중 에러가 발생했습니다.');
-        this.$router.push('/index');
+        this.$router.push('/');
       });
     }
   }

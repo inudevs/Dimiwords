@@ -7,7 +7,7 @@ router.get('/:id', function (req, res, next) { // wordbook infomation
     Wordbook.findById(id, function (error, wordbook) {
         if (error) { console.error(error); }
         res.send({wordbook})
-    }).sort({_id:-1})
+    })
 });
 
 module.exports = router;

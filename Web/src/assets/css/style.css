@@ -23,7 +23,7 @@ input:focus, textarea:focus, select:focus {
     border-image-slice: 1;
 }
 .wordbook .header {
-    margin-bottom: 5px;
+    margin-top: 5px;
 }
 .wordbook .title {
     color: #EC008C;
@@ -33,6 +33,12 @@ input:focus, textarea:focus, select:focus {
     -webkit-text-fill-color: transparent;
     font-size: 32px;
     text-decoration: none;
+    margin-top: 5px;
+}
+.wordbook .intro {
+    color: black;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 .words {
     margin-bottom: 5px;
