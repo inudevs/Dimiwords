@@ -34,10 +34,10 @@ input:focus, textarea:focus, select:focus {
     font-size: 32px;
     text-decoration: none;
 }
-.wordbook .words {
+.words {
     margin-bottom: 5px;
 }
-.wordbook .word {
+.word {
     display: inline-block;
     color: #EC008C;
     font-weight: 450;
@@ -47,11 +47,19 @@ input:focus, textarea:focus, select:focus {
     margin-bottom: 5px;
     text-decoration: none;
 }
-.wordbook .word:hover {
+.word:hover {
     color: white;
-    background: #EC008c;
-    background: -webkit-linear-gradient(to right, #EC008c, #fc6767);
-    background: linear-gradient(to right, #EC008c, #fc6767);
+    background: #EC008C;
+    background: -webkit-linear-gradient(to right, #EC008C, #FC6767);
+    background: linear-gradient(to right, #EC008C, #FC6767);
+}
+.word.gradient {
+    color: white;
+    background: #EC008C;
+    background: -webkit-linear-gradient(to right, #EC008C, #FC6767);
+    background: linear-gradient(to right, #EC008C, #FC6767);
+    margin: 0;
+    margin-left: 5px;
 }
 .fa-ellipsis-h {
     color: rgb(223, 223, 223);
@@ -106,7 +114,8 @@ input:focus, textarea:focus, select:focus {
     display: inline-block;
     width: 30%;
     color: black;
-    margin-top: 30px;
+    margin-top: 25px;
+    margin-bottom: 25px;
     border: 3px rgb(37, 37, 37) solid;
     border-radius: 25px;
     font-size: 25px;
@@ -123,6 +132,82 @@ input:focus, textarea:focus, select:focus {
 table td {
     padding: 10px;
 }
-table tr td:first-child {
-    border-right: 2px solid #EC008C;
+table tr td:last-child {
+    border-left: 2px solid #EC008C;
+}
+input[type=checkbox]{
+    transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    -o-transform: scale(1.5);
+    padding: 10px;
+}
+.new-help {
+    font-size: 24px;
+    font-family: 'Yeon Sung', cursive;
+}
+.new-word {
+    display: inline-block;
+    color: #EC008C;
+    border: 3px #EC008C solid;
+    border-radius: 25px;
+    font-size: 22px;
+    font-family: 'Yeon Sung', cursive;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+.new-word:hover {
+    color: white;
+    background: #EC008C;
+}
+.word-input {
+    font-size: 23px;
+}
+.word-input span {
+    font-family: 'Yeon Sung', cursive;
+}
+.no-words {
+    display: inline-block;
+    font-size: 20px;
+    font-family: 'Yeon Sung', cursive;
+    color: #EC008C;
+    border: 2px #EC008C solid;
+    background: white;
+    border-radius: 25px;
+}
+.no-words:hover {
+    color: white;
+    background: #EC008C;
+}
+.add-words-box {
+    text-align: center;
+}
+.english-input {
+    color: black;
+    border: 3px rgb(37, 37, 37) dotted;
+    border-radius: 0.4rem;
+}
+.korean-input {
+    color: black;
+    border: 2px rgb(165, 165, 165) solid;
+    border-radius: 10px;
+    font-size: 20px;
+    margin-top: 10px;
+}
+.add-korean {
+    display: inline-block;
+    font-size: 20px;
+    font-family: 'Yeon Sung', cursive;
+    color: #FC6767;
+    border: 2px #FC6767 solid;
+    background: white;
+    border-radius: 25px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 10px;
+}
+.add-korean:hover {
+    color: white;
+    background: #FC6767;
 }

@@ -1,23 +1,41 @@
 <template>
   <div class="new">
     <h1>단어장 만들기</h1>
-    <p>단어장에 추가할 단어를 선택하세요</p>
+    <p class="new-help">단어장에 추가할 단어를 <b>선택</b>하세요</p>
     <table class="word-table">
       <tr v-for="word in all_words.words">
-        <td><strong>{{ word.en }}</strong></td>
-        <td><strong>뜻: </strong>{{ word.ko.join(', ') }}</td>
+        <td>
+          <input type="checkbox" v-model="words" :value="word">
+        </td>
+        <td>
+          <strong>{{ word.en }}</strong>
+        </td>
+        <td>
+          <strong>뜻: </strong>{{ word.ko.join(', ') }}
+        </td>
       </tr>
-    </table>
-    <p>새로운 단어를 추가하세요</p>
-    <div class="add-words">
-      <input type="text" name="english" placeholder="영단어" v-model="en">
-        <div v-for="(korean, index) in ko">
-          <span>{{ index+1 }}번째 뜻: </span><input v-model="ko[index]">
-        </div>
-      <button @click="addKo">한국어 뜻 추가하기</button>
-      <button @click="addWord">단어 추가하기</button>
+    </table><br>
+    <button class="no-words" @click="show">단어가 없나요?</button>
+    <modal name="add-words" height="auto" :scrollable="true">
+      <div class="add-words-box">
+        <p class="new-help">이미 등록된 단어가 없나요? 새로운 단어를 <strong>추가</strong>하세요</p>
+        <input type="text" id="english-input" class="word-input english-input" placeholder="영단어" v-model.trim="en" @keyup="keyCheckEn"><br>
+          <div v-for="(korean, index) in ko" class="word-input">
+            <span>{{ index+1 }}번째 뜻: </span>
+            <input class="korean-input" v-model.trim="ko[index]" @keyup="keyCheckKo">
+            <div v-if="index+1 == ko.length">
+              <button class="add-korean" @click="addKo">한국어 뜻 추가하기</button><br>
+            </div>
+          </div>
+        <button class="new-word" @click="addWord">단어 추가하기</button>
+      </div>
+    </modal>
+    <div v-if="words.length > 0" class="new-wordbook-box">
+      <p class="new-help">이 단어들로 새로운 <strong>단어장</strong>을 만들 거예요</p>
+      <span class="word gradient" v-for="word in words">{{ word.en }}</span><br>
+      <button class="new-wordbook" @click="">단어장 추가하기</button>
     </div>
-    <div class="words">{{ words }}</div>
+    <p v-else class="new-help">단어를 <strong>선택</strong>해 주세요</p>
   </div>
 </template>
 
@@ -31,7 +49,7 @@ export default {
       all_words: [],
       words: [],
       en: '',
-      ko: []
+      ko: ['']
     }
   },
   methods: {
@@ -61,6 +79,10 @@ export default {
         alert('단어를 입력해 주세요!');
         return false;
       };
+      if (this.en.match(/[^a-zA-Z]/) != null){ // check if english input is only english chars
+        alert('영단어 란에는 영문자만 입력해 주세요!');
+        return false;
+      }
       this.ko = this.ko.filter(Boolean); // delete empty korean meanings
       var word = {'en': this.en, 'ko': this.ko};
       console.log(word);
@@ -72,11 +94,40 @@ export default {
         })
       .then(response => {
         console.log(response);
+        if (response.data.success) alert('단어를 추가했습니다.');
+        else alert('단어를 추가하는 도중 에러가 발생했습니다.');
         
         // update all_words
         this.updateWords();
+
+        // init en, ko
+        this.en = '';
+        this.ko = [''];
+        // this.hide();
       });
-    }
+    },
+    show () {
+      this.$modal.show('add-words');
+    },
+    hide () {
+      this.$modal.hide('add-words');
+    },
+    keyCheckEn () {
+      var _input = document.getElementById('english-input');
+      if (this.en.length > 0 && this.en.match(/[^a-zA-Z]/) == null){
+        _input.style.borderColor = '#EC008C';
+        _input.style.borderStyle = 'solid';
+      }
+      else {
+        _input.style.borderColor = 'rgb(37, 37, 37)';
+        _input.style.borderStyle = 'dotted';
+      }
+    },
+    keyCheckKo: function (event) {
+      var _input = event.target;
+      if (_input.value.length > 0) _input.style.borderColor = '#FC6767';
+      else _input.style.borderColor = 'rgb(165, 165, 165)';
+    },
   }
 }
 </script>
