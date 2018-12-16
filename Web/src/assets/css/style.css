@@ -233,3 +233,13 @@ input[type=checkbox]{
     color: #EC008C;
     font-size: 20px;
 }
+.fa-question-circle {
+    width: 50px;
+    margin: 5px;
+    color: rgb(37, 37, 37);
+}
+.fa-times {
+    width: 50px;
+    margin: 5px;
+    color: rgb(37, 37, 37);
+}

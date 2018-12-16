@@ -130,6 +130,9 @@ export default {
         _input.style.borderColor = 'rgb(37, 37, 37)';
         _input.style.borderStyle = 'dotted';
       }
+      if (_input.value.match(/[^A-Z]/)){
+        _input.value = this.en.toLowerCase();
+      }
     },
     keyCheckKo: function (event) {
       var _input = event.target;

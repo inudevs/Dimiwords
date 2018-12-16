@@ -15,6 +15,15 @@
         <i class="fas fa-bars fa-3x"></i>
       </router-link>
     </div>
+    <div v-else>
+      <i class="fas fa-question-circle fa-3x" v-on:click="hint"
+        v-on:mouseover="infoHint" v-on:mouseleave="infoClear"></i>
+      <i class="fas fa-times fa-3x" v-on:click="pass"
+        v-on:mouseover="infoPass" v-on:mouseleave="infoClear"></i>
+    </div>
+    <div>
+      <p id="button-info" class="new-help">주어진 뜻에 맞는 영단어를 입력해 주세요</p>
+    </div>
   </div>
 </template>
 
@@ -95,6 +104,43 @@ export default {
       },
       refresh: function () {
         this.$router.go();
+      },
+      infoHint: function () {
+        var _info = document.getElementById('button-info');
+        _info.innerHTML = '<strong>? 버튼</strong>을 누르면 힌트가 나와요';
+      },
+      infoPass: function () {
+        var _info = document.getElementById('button-info');
+        _info.innerHTML = '<strong>X 버튼</strong>을 누르면 모르는 단어를 패스할 수 있어요';
+      },
+      infoClear: function () {
+        var _info = document.getElementById('button-info');
+        _info.innerHTML = '주어진 뜻에 맞는 영단어를 입력해 주세요';
+      },
+      hint: function () {
+        alert(this.current.en[0] + '로 시작하는 단어랍니다!');
+      },
+      pass: function () {
+        var _input = document.getElementById('guess');
+        _input.value = this.current.en;
+        _input.disabled = true;
+        _input.style.borderStyle = 'solid';
+        // _input.style.borderColor = '#EC008C';
+        setTimeout((src, item) => {
+          _input.value = '';
+          _input.disabled = false;
+          _input.focus();
+          _input.style.borderStyle = 'dotted';
+          // _input.style.borderColor = 'rgb(37, 37, 37)';
+          if (this.words.length == 0){
+            _input.disabled = true;
+            this.running = false;
+          }
+          else {
+            this.current = this.next();
+            this.current.ko = this.current.ko.join(', ');
+          }
+        }, 500);
       }
   }
 }
