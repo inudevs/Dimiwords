@@ -6,7 +6,7 @@
       <span v-else>끝</span>
     </strong><br>
     <div id="progress">
-      <div id="bar"><span id="time">{{ (progress.current/progress.all || 0)*100 + '%' }}</span></div>
+      <div id="bar"><span id="time">{{ Math.floor((progress.current/progress.all || 0)*100) + '%' }}</span></div>
     </div>
     <input id="guess" v-if="running" v-on:keyup="key">
     <div v-if="!running">
