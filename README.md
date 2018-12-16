@@ -6,5 +6,5 @@ npm install
 forever start ./bin/www
 cd ../Web
 npm install
-forever start -c "npm start" .
+sudo forever start -c "serve -l 80" ./dist
 ```
