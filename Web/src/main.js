@@ -6,7 +6,10 @@ import router from './router'
 import axios from 'axios'
 import VModal from 'vue-js-modal'
 
-Vue.prototype.$http = axios
+Vue.prototype.$http = axios.create({
+  baseURL: "http://localhost:3000/" // api server url
+});
+
 Vue.config.productionTip = false
 
 Vue.use(VModal, { dynamic: true })
