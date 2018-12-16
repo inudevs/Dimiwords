@@ -1,21 +1,11 @@
 # dimiwords-web
 
-> A Vue.js project
+## Setup API server URL
 
-## Build Setup
+Change following code in `Web/src/main.js` to your running API server URL
 
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
+```js
+Vue.prototype.$http = axios.create({
+  baseURL: "http://localhost:3000/" // api server url
+});
 ```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
