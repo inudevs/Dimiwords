@@ -62,7 +62,7 @@ export default {
   },
   methods: {
     updateWords: function () {
-      this.$http.get('http://localhost:3000/api/words')
+      this.$http.get('/api/words')
       .then((response) => {
         this.all_words = response.data
       })
@@ -97,7 +97,7 @@ export default {
 
       // add to DB
       this.$http.post(
-        'http://localhost:3000/api/new/word', word, { 
+        '/api/new/word', word, { 
           headers: { 'Content-type': 'application/json' }
         })
       .then(response => {
@@ -146,7 +146,7 @@ export default {
 
       // add to DB
       this.$http.post(
-        'http://localhost:3000/api/new/wordbook', wordbook, { 
+        '/api/new/wordbook', wordbook, { 
           headers: { 'Content-type': 'application/json' }
         })
       .then(response => {

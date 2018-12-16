@@ -29,7 +29,7 @@
 <script>
 export default {
   created () {
-    this.$http.get('http://localhost:3000/api')
+    this.$http.get('/api')
     .then((response) => {
       this.words = response.data.wordbooks
     })
