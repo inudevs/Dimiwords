@@ -143,13 +143,11 @@ export default {
         _input.value = this.current.en;
         _input.disabled = true;
         _input.style.borderStyle = 'solid';
-        // _input.style.borderColor = '#EC008C';
         setTimeout((src, item) => {
           _input.value = '';
           _input.disabled = false;
           _input.focus();
           _input.style.borderStyle = 'dotted';
-          // _input.style.borderColor = 'rgb(37, 37, 37)';
           if (this.words.length == 0){
             _input.disabled = true;
             this.running = false;

@@ -122,7 +122,7 @@ export default {
     },
     keyCheckEn () {
       var _input = document.getElementById('english-input');
-      if (this.en.length > 0 && this.en.match(/[^a-zA-Z]/) == null){
+      if (this.en.length > 0 && this.en.match(/[^a-z]/) == null){
         _input.style.borderColor = '#EC008C';
         _input.style.borderStyle = 'solid';
       }
@@ -130,7 +130,7 @@ export default {
         _input.style.borderColor = 'rgb(37, 37, 37)';
         _input.style.borderStyle = 'dotted';
       }
-      if (_input.value.match(/[^A-Z]/)){
+      if (_input.value.match(/(?=[A-Z]|[^A-Z])/)){
         _input.value = this.en.toLowerCase();
       }
     },
