@@ -10,9 +10,10 @@
     </div>
     <input id="guess" v-if="running" v-on:keyup="key">
     <div v-if="!running">
-      <i class="fas fa-redo fa-3x" v-on:click="refresh"></i>
+      <i class="fas fa-redo fa-3x" v-on:click="refresh"
+        v-on:mouseover="infoRefresh" v-on:mouseleave="infoClear"></i>
       <router-link :to="{ name: 'index' }" class="link">
-        <i class="fas fa-bars fa-3x"></i>
+        <i class="fas fa-bars fa-3x" v-on:mouseover="infoMenu" v-on:mouseleave="infoClear"></i>
       </router-link>
     </div>
     <div v-else>
@@ -22,7 +23,8 @@
         v-on:mouseover="infoPass" v-on:mouseleave="infoClear"></i>
     </div>
     <div>
-      <p id="button-info" class="new-help">주어진 뜻에 맞는 영단어를 입력해 주세요</p>
+      <p v-if="running" id="button-info" class="new-help running">주어진 뜻에 맞는 영단어를 입력해 주세요</p>
+      <p v-else id="button-info" class="new-help ending"></p>
     </div>
   </div>
 </template>
@@ -72,6 +74,8 @@ export default {
             if (this.words.length == 0){
               _input.disabled = true;
               this.running = false;
+              var _info = document.getElementById('button-info');
+              _info.innerHTML = `${this.progress.all}개 중 <strong>${this.progress.current}개 단어</strong>를 맞췄어요`;
             }
             else {
               this.current = this.next();
@@ -113,9 +117,23 @@ export default {
         var _info = document.getElementById('button-info');
         _info.innerHTML = '<strong>X 버튼</strong>을 누르면 모르는 단어를 패스할 수 있어요';
       },
+      infoRefresh: function () {
+        var _info = document.getElementById('button-info');
+        _info.innerHTML = '<strong>다시하기 버튼</strong>을 누르면 단어장을 다시 풀 수 있어요';
+      },
+      infoMenu: function () {
+        var _info = document.getElementById('button-info');
+        _info.innerHTML = '<strong>메뉴 버튼</strong>을 누르면 단어장 목록으로 돌아갈 수 있어요';
+      },
       infoClear: function () {
         var _info = document.getElementById('button-info');
-        _info.innerHTML = '주어진 뜻에 맞는 영단어를 입력해 주세요';
+        console.log('running:', this.running)
+        if (!this.running){
+          _info.innerHTML = `${this.progress.all}개 중 ${this.progress.current}개 단어를 맞췄어요`;
+        }
+        else {
+          _info.innerHTML = '주어진 뜻에 맞는 영단어를 입력해 주세요';
+        }
       },
       hint: function () {
         alert(this.current.en[0] + '로 시작하는 단어랍니다!');
@@ -135,6 +153,8 @@ export default {
           if (this.words.length == 0){
             _input.disabled = true;
             this.running = false;
+            var _info = document.getElementById('button-info');
+            _info.innerHTML = `${this.progress.all}개 중 <strong>${this.progress.current}개 단어</strong>를 맞췄어요`;
           }
           else {
             this.current = this.next();
