@@ -11,7 +11,7 @@
           <span v-for="word in wordbook.words">
             <a class="word" href="#">{{ word.en }}</a>&nbsp;
           </span>
-          <router-link :to="{ name: 'show', params: { id: wordbook._id }}">
+          <router-link v-if="wordbook.len > 5" :to="{ name: 'show', params: { id: wordbook._id }}">
             <i class="fas fa-ellipsis-h"></i>
           </router-link>
         </div>

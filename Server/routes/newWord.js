@@ -7,20 +7,30 @@ router.post('/word', (req, res) => { // add new word
     var english = req.body.en;
     var korean = req.body.ko;
     console.log(req.body)
-    var new_word = new Word({
-        en: english,
-        ko: korean
-    })
-    console.log(new_word)    
-    // todo: check exact duplicate for word and reject if existing
-    
-    new_word.save(function (error) {
-        if (error) { console.log(error) }
-        res.send({
-            success: true,
-            message: 'Word saved successfully'
-        })
-    })
+    Word.find({en: english, ko: korean}, function (err, docs) {
+        // console.log(docs)
+        if (docs.length){
+            res.send({
+                success: false,
+                message: 'Word exists'
+            })
+        } else {                
+            var new_word = new Word({
+                en: english,
+                ko: korean.sort()
+                // sort Korean 
+            })
+            // console.log(new_word)
+            
+            new_word.save(function (error) {
+                if (error) { console.log(error) }
+                res.send({
+                    success: true,
+                    message: 'Word saved successfully'
+                })
+            })
+        }
+    });
 })
 
 module.exports = router;
