@@ -3,7 +3,7 @@
     <h1>단어장 만들기</h1>
     <p class="new-help">단어장에 추가할 단어를 <b>선택</b>하세요</p>
     <table class="word-table">
-      <tr v-for="word in all_words.words">
+      <tr v-for="word in all_words">
         <td>
           <input type="checkbox" v-model="words" :value="word">
         </td>
@@ -15,6 +15,11 @@
         </td>
       </tr>
     </table><br>
+    <div>
+      <button @click="pagePrev">뒤 페이지</button>
+      <span>{{ this.page }}</span>
+      <button @click="pageNext">앞 페이지</button>
+    </div>
     <button class="no-words" @click="show">찾는 단어가 없나요?</button>
     <modal name="add-words" height="auto" :scrollable="true">
       <div class="add-words-box">
@@ -52,6 +57,8 @@ export default {
   },
   data () {
     return {
+      page: 1,
+      page_max: undefined,
       all_words: [],
       words: [],
       en: '',
@@ -62,9 +69,12 @@ export default {
   },
   methods: {
     updateWords: function () {
-      this.$http.get('/api/words')
+      this.$http.get('/api/words', {
+        params: {page: this.page}
+      })
       .then((response) => {
-        this.all_words = response.data
+        this.all_words = response.data.result.docs
+        if (this.page_max == null) this.page_max = response.data.result.pages
       })
     },
     addKo: function () {
@@ -159,6 +169,18 @@ export default {
         else alert('단어장을 추가하는 도중 에러가 발생했습니다.');
         this.$router.push('/');
       });
+    },
+    pagePrev: function () { // previous page
+      if (this.page > 1) { // only if prev page is available
+        this.page--;
+        this.updateWords();
+      }
+    },
+    pageNext: function () { // next page
+      if (this.page < this.page_max) { // only if next page is available
+        this.page++;
+        this.updateWords();
+      }
     }
   }
 }

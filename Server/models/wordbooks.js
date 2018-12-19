@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var mongoosePaginate = require('mongoose-paginate');
 var Schema = mongoose.Schema;
 var WordSchema = require('./words').schema;
 
@@ -7,6 +8,7 @@ var WordbookSchema = new Schema({
     intro: String, // intro of wordbook
     words: [WordSchema] // list of words in wordbook
 });
+WordbookSchema.plugin(mongoosePaginate);
 
 var Wordbook = mongoose.model('Wordbook', WordbookSchema);
 module.exports = Wordbook;
