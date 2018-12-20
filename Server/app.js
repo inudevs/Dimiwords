@@ -7,6 +7,7 @@ var cors = require('cors')
 
 var indexRouter = require('./routes/index');
 var wordsRouter = require('./routes/words');
+var userRouter = require('./routes/user');
 var wordbookRouter = require('./routes/wordbook');
 var newWordRouter = require('./routes/newWord');
 var newWordbookRouter = require('./routes/newWordbook');
@@ -33,6 +34,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api', indexRouter); // /api
 app.use('/api/words', wordsRouter); // /api/words
 app.use('/api', wordbookRouter); // /api/{id\}
+app.use('/api/user', userRouter); // /api/user/{id\}
+
 app.use('/api/new', newWordRouter) // /api/new/word
 app.use('/api/new', newWordbookRouter) // /api/new/wordbook
 app.use('/api/new', newUserRouter) // /api/new/user
