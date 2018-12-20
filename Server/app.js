@@ -10,6 +10,9 @@ var wordsRouter = require('./routes/words');
 var wordbookRouter = require('./routes/wordbook');
 var newWordRouter = require('./routes/newWord');
 var newWordbookRouter = require('./routes/newWordbook');
+var newUserRouter = require('./routes/newUser');
+
+var loginRouter = require('./routes/auth/login');
 
 var secret = require('./secret.json');
 
@@ -29,9 +32,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api', indexRouter); // /api
 app.use('/api/words', wordsRouter); // /api/words
-app.use('/api', wordbookRouter); // /api/{id}
+app.use('/api', wordbookRouter); // /api/{id\}
 app.use('/api/new', newWordRouter) // /api/new/word
 app.use('/api/new', newWordbookRouter) // /api/new/wordbook
+app.use('/api/new', newUserRouter) // /api/new/user
+
+app.use('/api/auth', loginRouter) // /api/auth/login
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
