@@ -243,3 +243,44 @@ input[type=checkbox]{
     margin: 5px;
     color: rgb(37, 37, 37);
 }
+
+/* join */
+.join-form input {
+    color: black;
+    font-size: 20px;
+    width: 30%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 3px #EC008C solid;
+    border-radius: 10px;
+}
+.join-form input::placeholder {
+    color: #EC008C;
+    font-size: 20px;
+}
+.profile-preview .profile {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.profile-preview .name {
+    font-size: 25px;
+    font-weight: bold;
+}
+.new-user {
+    display: inline-block;
+    width: 30%;
+    color: black;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border: 3px rgb(37, 37, 37) solid;
+    border-radius: 25px;
+    font-size: 25px;
+    font-family: 'Yeon Sung', cursive;
+}
+.new-user:hover {
+    color: white;
+    background: black;
+}
