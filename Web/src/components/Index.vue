@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     updateWordbooks: function () {
-      this.$http.get('/api', {
+      this.$http.get('/api/list/wordbooks', {
         params: {page: this.page}
       })
       .then((response) => {

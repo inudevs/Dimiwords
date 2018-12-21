@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var User = require('../models/users.js');
+var User = require('../../models/users.js');
 
-router.post('/user', (req, res) => { // add new user
+router.post('/', (req, res) => { // add new user
     var name = req.body.name
     User.find({name: name}, function (err, docs) {
         if (docs.length){

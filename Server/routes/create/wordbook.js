@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var Wordbook = require('../models/wordbooks.js');
+var Wordbook = require('../../models/wordbooks.js');
 
-router.post('/wordbook', (req, res) => { // add new wordbook
+router.post('/', (req, res) => { // add new wordbook
     var db = req.db;
     var name = req.body.name;
     var intro = req.body.intro;

@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Word = require('../models/words.js')
+var Word = require('../../models/words.js')
 
 router.get('/', function (req, res, next) { // list of all words
     page = req.query.page;

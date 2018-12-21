@@ -1,4 +1,5 @@
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+const fs = require('fs');
 const secret = require('crypto').randomBytes(15).toString('hex');
 
 const auth = {

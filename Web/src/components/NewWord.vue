@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     updateWords: function () {
-      this.$http.get('/api/words', {
+      this.$http.get('/api/list/words', {
         params: {page: this.page}
       })
       .then((response) => {
@@ -107,7 +107,7 @@ export default {
 
       // add to DB
       this.$http.post(
-        '/api/new/word', word, { 
+        '/api/create/word', word, { 
           headers: { 'Content-type': 'application/json' }
         })
       .then(response => {
@@ -160,7 +160,7 @@ export default {
 
       // add to DB
       this.$http.post(
-        '/api/new/wordbook', wordbook, { 
+        '/api/create/wordbook', wordbook, { 
           headers: { 'Content-type': 'application/json' }
         })
       .then(response => {

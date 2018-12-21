@@ -33,7 +33,7 @@
 export default {
   created: function () {
     var id = this.$route.params.id;
-    this.$http.get(`/api/${id}`)
+    this.$http.get(`/api/get/wordbook/${id}`)
     .then((response) => {
       this.wordbook = response.data.wordbook;
       this.words = this.wordbook.words;

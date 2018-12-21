@@ -4,7 +4,7 @@ var User = require('../../models/users.js');
 var auth = require('../../auth.js');
 
 // check user data and create access token
-router.post('/login', (req, res) => {
+router.post('/', (req, res) => {
     var name = req.body.name;
     var password = req.body.password;
     User.findOne({name: name, password: password}, function (err, user) {

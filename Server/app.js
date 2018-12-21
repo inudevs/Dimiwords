@@ -5,15 +5,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var cors = require('cors')
 
-var indexRouter = require('./routes/index');
-var wordsRouter = require('./routes/words');
-var userRouter = require('./routes/user');
-var wordbookRouter = require('./routes/wordbook');
-var newWordRouter = require('./routes/newWord');
-var newWordbookRouter = require('./routes/newWordbook');
-var newUserRouter = require('./routes/newUser');
-
-var loginRouter = require('./routes/auth/login');
+var router = require('./routes');
 
 var secret = require('./secret.json');
 
@@ -31,16 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(logger('dev'));;
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api', indexRouter); // /api
-app.use('/api/words', wordsRouter); // /api/words
-app.use('/api', wordbookRouter); // /api/{id\}
-app.use('/api/user', userRouter); // /api/user/{id\}
-
-app.use('/api/new', newWordRouter) // /api/new/word
-app.use('/api/new', newWordbookRouter) // /api/new/wordbook
-app.use('/api/new', newUserRouter) // /api/new/user
-
-app.use('/api/auth', loginRouter) // /api/auth/login
+app.use('/api', router);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
