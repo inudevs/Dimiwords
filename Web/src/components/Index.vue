@@ -33,6 +33,11 @@
 
 <script>
 export default {
+  beforeCreate: function () {
+    if (!this.$session.exists()) {
+      this.$router.push('/user/login')
+    }
+  },
   created () {
     this.updateWordbooks();
   },
@@ -59,11 +64,11 @@ export default {
           this.updateWordbooks();
         }
       },
-      pageNext: function () { // next page
-        if (this.page < this.page_max) { // only if next page is available
-          this.page++;
-          this.updateWordbooks();
-        }
+    pageNext: function () { // next page
+      if (this.page < this.page_max) { // only if next page is available
+        this.page++;
+        this.updateWordbooks();
+      }
     }
   }
 }

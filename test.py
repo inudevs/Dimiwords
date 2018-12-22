@@ -8,7 +8,7 @@ def login(name, pw):
     print(r.text)
 
 def join(name, intro, pw, profile):
-    r = requests.post('http://localhost:3000/api/new/user', json={
+    r = requests.post('http://localhost:3000/api/create/user', json={
         'name': name,
         'intro': intro,
         'password': pw,
@@ -16,5 +16,5 @@ def join(name, intro, pw, profile):
     })
     print(r.text)
 
+join('admin', 'hi', 'admin', 'http://dimiwords.tk/static/img/logo.b3e94dc.png')
 login('admin', 'admin')
-# join('admin', 'hi', 'admin', 'http://dimiwords.tk/static/img/logo.b3e94dc.png')

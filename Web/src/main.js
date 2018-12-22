@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import axios from 'axios'
 import VModal from 'vue-js-modal'
+import VueSession from 'vue-session'
 
 Vue.prototype.$http = axios.create({
   baseURL: "http://localhost:3000/" // api server url
@@ -13,6 +14,7 @@ Vue.prototype.$http = axios.create({
 Vue.config.productionTip = false
 
 Vue.use(VModal, { dynamic: true })
+Vue.use(VueSession)
 
 /* eslint-disable no-new */
 new Vue({

@@ -15,8 +15,12 @@ router.post('/', (req, res) => {
         } else {
             const token = auth.sign(user.id)
             console.log(token)
-            res.json({success: true, token: token})
-            console.log(auth.verify(token).id) // user id
+            const id = auth.verify(token).id
+            User.findById(id, function (error, user) {
+                if (error) { console.error(error); }
+                res.json({success: true, token: token, user: user})
+            }).select("-password")
+            // console.log(auth.verify(token).id) // user id
         }
     })
 })

@@ -28,7 +28,11 @@
 
 <script>
 export default {
-    created () {},
+    beforeCreate: function () {
+        if (this.$session.exists()) {
+            this.$router.push('/')
+        }
+    },
     data () {
         return {
             name: '',

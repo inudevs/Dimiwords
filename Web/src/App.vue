@@ -1,13 +1,40 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png" id="dimigo-logo">
+    <img src="./assets/logo.png" id="dimigo-logo"><br>
+    <div v-if="logged_in">
+      <strong>{{ this.user.name }}</strong>
+      <span>{{ '(' + this.user.points + ' points)' }}</span>
+      <button @click="logout">로그아웃</button>
+    </div>
     <router-view/>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  beforeCreate: function () {
+    if (this.$session.exists()) {
+      this.$nextTick(function() {
+        this.user = this.$session.get('user');
+        this.logged_in = true;
+        console.log(true)
+      })
+    }
+  },
+  data () {
+    return {
+      user: undefined,
+      logged_in: false
+    }
+  },
+  methods: {
+    logout: function () {
+      this.$session.destroy()
+      this.$router.push('/user/login')
+      this.$router.go();
+    }
+  }
 }
 </script>
 

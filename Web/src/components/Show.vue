@@ -8,7 +8,7 @@
     <div id="progress">
       <div id="bar"><span id="time">{{ Math.floor((progress.current/progress.all || 0)*100) + '%' }}</span></div>
     </div>
-    <input id="guess" v-if="running" v-on:keyup="key">
+    <input id="guess" v-if="running" v-on:keyup="key" autocomplete="off">
     <div v-if="!running">
       <i class="fas fa-redo fa-3x" v-on:click="refresh"
         v-on:mouseover="infoRefresh" v-on:mouseleave="infoClear"></i>
@@ -31,6 +31,11 @@
 
 <script>
 export default {
+  beforeCreate: function () {
+    if (!this.$session.exists()) {
+      this.$router.push('/user/login')
+    }
+  },
   created: function () {
     var id = this.$route.params.id;
     this.$http.get(`/api/get/wordbook/${id}`)
