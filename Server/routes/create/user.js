@@ -1,10 +1,11 @@
 var express = require('express');
 var router = express.Router();
+var auth = require('../../auth.js');
 var User = require('../../models/users.js');
 
 router.post('/', (req, res) => { // add new user
-    var name = req.body.name
-    User.find({name: name}, function (err, docs) {
+    var email = req.body.email
+    User.find({email: email}, function (err, docs) {
         if (docs.length){
             res.send({
                 success: false,
@@ -12,11 +13,13 @@ router.post('/', (req, res) => { // add new user
             })
         } else {                
             var new_user = new User({
-                name: name,
+                name: req.body.name,
                 intro: req.body.intro,
+                email: email,
                 password: req.body.password,
+                department: { 'eb': 0, 'dc': 1, 'wp': 2, 'hd': 3 }[req.body.department],
                 points: 0,
-                profile: req.body.profile
+                profile: undefined
             })
             console.log(new_user)
             

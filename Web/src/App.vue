@@ -18,7 +18,7 @@ export default {
       this.$nextTick(function() {
         this.user = this.$session.get('user');
         this.logged_in = true;
-        console.log(true)
+        // console.log(true)
       })
     }
   },

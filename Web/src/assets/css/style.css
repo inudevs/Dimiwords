@@ -284,3 +284,60 @@ input[type=checkbox]{
     color: white;
     background: black;
 }
+#department {
+    font-weight: bold;
+}
+.department button {
+    width: 110px;
+    height: 45px;
+    font-size: 20px;
+    background: none;
+    border: 5px solid;
+    border-radius: 5px;
+}
+.department button:focus { 
+    outline:0 !important; 
+}
+.department .first {
+    margin-bottom: 5px;
+}
+#eb-button {
+    color: #424242;
+    border-color: #424242;
+}
+#dc-button {
+    color: #FF0080;
+    border-color: #FF0080;
+}
+#wp-button {
+    color: #9A2EFE;
+    border-color: #9A2EFE;
+}
+#hd-button {
+    color: #3A01DF;
+    border-color: #3A01DF;
+}
+.join-form .eb {
+    border: 3px #424242 solid;
+}
+.join-form .eb::placeholder {
+    color: #424242;
+}
+.join-form .dc {
+    border: 3px #FF0080 solid;
+}
+.join-form .dc::placeholder {
+    color: #FF0080;
+}
+.join-form .wp {
+    border: 3px #9A2EFE solid;
+}
+.join-form .wp::placeholder {
+    color: #9A2EFE;
+}
+.join-form .hd {
+    border: 3px #3A01DF solid;
+}
+.join-form .hd::placeholder {
+    color: #3A01DF;
+}

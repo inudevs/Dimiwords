@@ -1,10 +1,12 @@
 <template>
     <div>
         <h1>로그인</h1>
-        <router-link :to="{ name: 'join' }">가입하기</router-link>
+        <p>
+            <router-link :to="{ name: 'join' }">가입하기</router-link>
+        </p>
         <div class="join">
             <div class="join-form">
-                <input v-model.trim="name" @keyup="running=true" placeholder="사용자 이름"><br>
+                <input v-model.trim="email" @keyup="running=true" placeholder="이메일"><br>
                 <input v-model.trim="password" type="password" placeholder="비밀번호"><br>
             </div>
         </div>
@@ -21,14 +23,14 @@ export default {
     },
     data () {
         return {
-            name: '',
+            email: '',
             password: ''
         }
     },
     methods: {
         login: function () {
             this.$http.post('/api/auth/login', {
-                name: this.name,
+                email: this.email,
                 password: this.password
             }).then((response) => {
                 console.log(response)
@@ -39,9 +41,12 @@ export default {
                     this.$router.push('/')
                     this.$router.go();
                 }
+                else {
+                    alert('로그인에 실패했습니다.')
+                }
             }, function (err) {
                 console.log('err', err)
-                alert('nono')
+                alert('로그인에 실패했습니다.')
             })
         }
     }
