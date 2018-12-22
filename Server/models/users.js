@@ -6,7 +6,7 @@ var UserSchema = new Schema({
     intro: String, // intro
     password: { type : String , required : true },
     points: Number,
-    profile: String // profile picture URL
+    profile: String, // profile picture URL
 });
 
 var User = mongoose.model('User', UserSchema);

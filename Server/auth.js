@@ -8,23 +8,6 @@ const auth = {
       {id}, secret
     )
   },
-  ensure () {
-    return (req, res, next) => {
-      const auth = req.get('token')
-      if (!auth) {
-        res.status(401)
-        throw Error('No token')
-      }
-      try {
-        req.user = this.verify(auth)
-        console.log(req.user)
-      } catch (e) {
-        res.status(401)
-        throw e
-      }
-      next()
-    }
-  },
   verify (token) {
     return jwt.verify(token, secret)
   }

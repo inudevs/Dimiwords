@@ -69,7 +69,8 @@ export default {
       en: '',
       ko: [''],
       name: '',
-      intro: ''
+      intro: '',
+      token: this.$session.get('jwt')
     }
   },
   methods: {
@@ -107,7 +108,7 @@ export default {
         return false;
       }
       this.ko = this.ko.filter(Boolean); // delete empty korean meanings
-      var word = {'en': this.en, 'ko': this.ko};
+      var word = {'en': this.en, 'ko': this.ko, 'token': this.token };
       console.log(word);
 
       // add to DB
@@ -117,8 +118,12 @@ export default {
         })
       .then(response => {
         console.log(response);
-        if (response.data.success) alert('단어를 추가했습니다.');
-        else if (response.data.message.includes('exist')) alert('정확히 같은 뜻의 단어가 이미 존재합니다.');
+        if (response.data.success) 
+          alert('단어를 추가했습니다.');
+        else if (response.data.message.includes('exist')) 
+          alert('정확히 같은 뜻의 단어가 이미 존재합니다.');
+        else if (response.data.message.includes('failed to verify'))
+          alert('유효하지 않은 토큰입니다. 로그아웃 후 다시 로그인해서 시도해 보세요.');
         else alert('단어를 추가하는 도중 에러가 발생했습니다.');
         
         // update all_words
@@ -159,7 +164,8 @@ export default {
       var wordbook = {
         'name': this.name,
         'intro': this.intro,
-        'words': this.words
+        'words': this.words,
+        'token': this.token
       };
       console.log(wordbook);
 
@@ -170,7 +176,10 @@ export default {
         })
       .then(response => {
         console.log(response);
-        if (response.data.success) alert('단어장을 추가했습니다.');
+        if (response.data.success) 
+          alert('단어장을 추가했습니다.');
+        else if (response.data.message.includes('failed to verify'))
+          alert('유효하지 않은 토큰입니다. 로그아웃 후 다시 로그인해서 시도해 보세요.');
         else alert('단어장을 추가하는 도중 에러가 발생했습니다.');
         this.$router.push('/');
       });
