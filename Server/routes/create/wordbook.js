@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var auth = require('../../auth.js');
+var User = require('../../models/users.js');
 var Wordbook = require('../../models/wordbooks.js');
 
 router.post('/', (req, res) => { // add new wordbook
@@ -14,6 +15,7 @@ router.post('/', (req, res) => { // add new wordbook
             success: false,
             message: 'No token provided'
         })
+        return
     }
     try {
         var user_id = auth.verify(token).id;
@@ -22,21 +24,41 @@ router.post('/', (req, res) => { // add new wordbook
             success: false,
             message: 'failed to verify token'
         })
+        return
     }  
-    var new_wordbook = new Wordbook({
-        name: name,
-        intro: intro,
-        words: words,
-        user_id: user_id
-    })
-
-    new_wordbook.save(function (error) {
-        if (error) { console.log(error) }
-        res.send({
-            success: true,
-            message: 'Wordbook saved successfully'
+    console.log(true)
+    User.findById(user_id, function (error, user) {
+        if (error || !user) { 
+            console.error(error); 
+            res.send({
+                success: false,
+                message: 'failed to verify token'
+            })
+            return
+        }
+        console.log(user)
+        var new_wordbook = new Wordbook({
+            name: name,
+            intro: intro,
+            words: words,
+            user: user.name
         })
-    })
+    
+        new_wordbook.save(function (error) {
+            if (error) { 
+                console.log(error) 
+                res.send({
+                    success: false,
+                    message: 'Error'
+                })
+                return
+            }
+            res.send({
+                success: true,
+                message: 'Wordbook saved successfully'
+            })
+        })
+    }).select('name')
 })
 
 module.exports = router;

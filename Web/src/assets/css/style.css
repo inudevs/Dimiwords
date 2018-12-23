@@ -35,6 +35,10 @@ input:focus, textarea:focus, select:focus {
     text-decoration: none;
     margin-top: 5px;
 }
+.wordbook .author {
+    color: black;
+    font-size: 15px;
+}
 .wordbook .intro {
     color: black;
     margin-top: 5px;

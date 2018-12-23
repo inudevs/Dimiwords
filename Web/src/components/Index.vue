@@ -5,7 +5,10 @@
       <router-link :to="{ name: 'show', params: { id: wordbook._id }}" class="link">
         <div class="header">
           <strong class="title">{{ wordbook.name }}</strong>
-          <p class="intro">{{ wordbook.intro }}</p>
+          <p class="intro">
+            {{ wordbook.intro }}<br>
+            <strong class="author">{{ '-' + wordbook.user + '-' }}</strong>
+          </p>
         </div>
         <div class="words">
           <span v-for="word in wordbook.words">

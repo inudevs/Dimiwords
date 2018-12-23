@@ -7,7 +7,7 @@ var WordbookSchema = new Schema({
     name: String, // name of wordbook
     intro: String, // intro of wordbook
     words: [WordSchema], // list of words in wordbook
-    user_id: String // _id of user who created wordbook
+    user: String // name of user who created wordbook
 });
 WordbookSchema.plugin(mongoosePaginate);
 
