@@ -1,4 +1,5 @@
 var express = require('express');
+var crypto = require('crypto');
 var router = express.Router();
 var User = require('../../models/users.js');
 var auth = require('../../auth.js');
@@ -6,7 +7,7 @@ var auth = require('../../auth.js');
 // check user data and create access token
 router.post('/', (req, res) => {
     var email = req.body.email;
-    var password = req.body.password;
+    var password = crypto.createHash('md5').update(req.body.password, 'utf8').digest('hex');
     User.findOne({email: email, password: password}, function (err, user) {
         if (err) {
             console.log(err)

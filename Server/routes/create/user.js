@@ -1,4 +1,5 @@
 var express = require('express');
+var crypto = require('crypto');
 var router = express.Router();
 var auth = require('../../auth.js');
 var User = require('../../models/users.js');
@@ -16,7 +17,7 @@ router.post('/', (req, res) => { // add new user
                 name: req.body.name,
                 intro: req.body.intro,
                 email: email,
-                password: req.body.password,
+                password: crypto.createHash('md5').update(req.body.password, 'utf8').digest('hex'),
                 department: { 'eb': 0, 'dc': 1, 'wp': 2, 'hd': 3 }[req.body.department],
                 points: 0,
                 profile: undefined
