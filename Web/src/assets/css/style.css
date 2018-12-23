@@ -135,10 +135,10 @@ input:focus, textarea:focus, select:focus {
     display: inline-block;
     border-collapse: collapse;
 }
-table td {
+table.word-table td {
     padding: 10px;
 }
-table tr td:last-child {
+table.word-table tr td:last-child {
     border-left: 2px solid #EC008C;
 }
 input[type=checkbox]{
@@ -243,7 +243,6 @@ input[type=checkbox]{
     margin: 5px;
     color: rgb(37, 37, 37);
 }
-
 /* join */
 .join-form input {
     color: black;
@@ -340,4 +339,54 @@ input[type=checkbox]{
 }
 .join-form .hd::placeholder {
     color: #3A01DF;
+}
+/* app_default profile */
+.profile .name {
+    font-size: 25px;
+    font-weight: bold;
+}
+.profile .department {
+    font-weight: bold;
+}
+/* ranking */
+.ranking {
+    width: 100%;
+    text-align: center;
+}
+.ranking table {
+    width: 80%;
+    margin: 0 auto;
+    padding: 5px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 25px;
+    box-shadow: 0 0 10px 5px lightgray;
+}
+.ranking table tbody:before {
+    content: "-";
+    display: block;
+    line-height: 10px;
+    color: transparent;
+}
+.ranking table tbody td {
+    text-align: center; vertical-align: middle;
+}
+.ranking table tbody td.rank {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.ranking tr:nth-child(1) td.rank {
+    background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+}
+.ranking tr:nth-child(2) td.rank {
+    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+}
+.ranking tr:nth-child(3) td.rank {
+    background-image: linear-gradient(to top, #c79081 0%, #dfa579 100%);
+}
+.ranking tr:nth-child(-n+3) td {
+    font-weight: bold;
 }

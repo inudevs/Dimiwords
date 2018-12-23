@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var mongoosePaginate = require('mongoose-paginate');
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
@@ -10,6 +11,7 @@ var UserSchema = new Schema({
     points: Number,
     profile: String, // profile picture URL
 });
+UserSchema.plugin(mongoosePaginate);
 
 var User = mongoose.model('User', UserSchema);
 module.exports = User;

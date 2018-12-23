@@ -46,7 +46,7 @@ export default {
                 }
             }, function (err) {
                 console.log('err', err)
-                alert('로그인에 실패했습니다.')
+                alert('로그인 도중 에러가 발생했습니다.')
             })
         }
     }

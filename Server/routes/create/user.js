@@ -24,7 +24,14 @@ router.post('/', (req, res) => { // add new user
             console.log(new_user)
             
             new_user.save(function (error) {
-                if (error) { console.log(error) }
+                if (error) { 
+                    console.log(error) 
+                    res.send({
+                        success: false,
+                        message: 'Error'
+                    })
+                    return
+                }
                 res.send({
                     success: true,
                     message: 'User saved successfully'

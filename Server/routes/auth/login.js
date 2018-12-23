@@ -9,6 +9,7 @@ router.post('/', (req, res) => {
     var password = req.body.password;
     User.findOne({email: email, password: password}, function (err, user) {
         if (err) {
+            console.log(err)
             res.send({success: false, error: 'Error'})
         } else if (!user) {
             res.send({success: false, error: 'No User'})
