@@ -33,6 +33,11 @@
 
 <script>
 export default {
+  beforeCreate: function () {
+    if (!this.$session.exists()) {
+      this.$router.push('/user/login')
+    }
+  },
   created () {
     this.updateWordbooks();
   },
@@ -45,7 +50,7 @@ export default {
   },
   methods: {
     updateWordbooks: function () {
-      this.$http.get('/api', {
+      this.$http.get('/api/list/wordbooks', {
         params: {page: this.page}
       })
       .then((response) => {
@@ -59,11 +64,11 @@ export default {
           this.updateWordbooks();
         }
       },
-      pageNext: function () { // next page
-        if (this.page < this.page_max) { // only if next page is available
-          this.page++;
-          this.updateWordbooks();
-        }
+    pageNext: function () { // next page
+      if (this.page < this.page_max) { // only if next page is available
+        this.page++;
+        this.updateWordbooks();
+      }
     }
   }
 }
