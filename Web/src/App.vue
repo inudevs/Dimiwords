@@ -5,7 +5,6 @@
       <span class="name">{{ this.user.name }}</span>
       <span id="department" v-text="['EB', 'DC', 'WP', 'HD'][this.user.department]"
         v-bind:style="{ color: ['#424242', '#FF0080', '#9A2EFE', '#3A01DF'][this.user.department] }"></span><br>
-      <span class="intro">{{ this.user.points + ' points' }}</span><br>
       <button @click="home">홈</button>
       <button @click="logout">로그아웃</button>
       <button @click="ranking">랭킹</button><br>

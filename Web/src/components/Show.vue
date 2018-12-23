@@ -81,6 +81,7 @@ export default {
               this.running = false;
               var _info = document.getElementById('button-info');
               _info.innerHTML = `${this.progress.all}개 중 <strong>${this.progress.current}개 단어</strong>를 맞췄어요`;
+              this.updateScore()
             }
             else {
               this.current = this.next();
@@ -158,12 +159,30 @@ export default {
             this.running = false;
             var _info = document.getElementById('button-info');
             _info.innerHTML = `${this.progress.all}개 중 <strong>${this.progress.current}개 단어</strong>를 맞췄어요`;
+            this.updateScore()
           }
           else {
             this.current = this.next();
             this.current.ko = this.current.ko.join(', ');
           }
         }, 500);
+      },
+      updateScore: function () {
+        this.$http.post(
+        '/api/auth/points', {
+          points: this.progress.current,
+          token: this.$session.get('jwt')
+        }, { 
+          headers: { 'Content-type': 'application/json' }
+        })
+        .then(response => {
+          if (response.data.success) {
+            alert(`${this.progress.current} 포인트가 지급되었습니다.`);
+          } else {
+            console.log(response)
+            alert('포인트 지급 중 에러가 발생했습니다. 관리자에게 문의하세요.');
+          }
+        });
       }
   }
 }

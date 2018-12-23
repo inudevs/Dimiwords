@@ -41,9 +41,9 @@ router.post('/', (req, res) => { // add new word
                 user_id: user_id
             })
             // console.log(new_word)
-            User.update({_id: user_id}, {$inc: {points: 10}}, function (err, user) {
+            User.update({_id: user_id}, {$inc: {points: 2}}, function (err, user) {
                 if (err) console.log(err)
-            }); // give 10 points to user who created word
+            }); // give 2 points to user who created word
             new_word.save(function (error) {
                 if (error) { 
                     console.log(error) 

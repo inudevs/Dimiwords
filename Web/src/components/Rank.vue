@@ -1,6 +1,9 @@
 <template>
     <div>
         <h1>랭킹</h1>
+        <p class="new-info">
+            게임이 종료되고 맞춘 단어 하나당 <strong>1점</strong>, 새로운 단어를 등록하면 <strong>2점</strong>, 단어장을 등록하면 <strong>5점</strong>을 받아요
+        </p>
         <div class="ranking">
             <table>
                 <thead>
