@@ -5,7 +5,6 @@ var User = require('../../models/users.js');
 var Wordbook = require('../../models/wordbooks.js');
 
 router.post('/', (req, res) => { // add new wordbook
-    var db = req.db;
     var name = req.body.name;
     var intro = req.body.intro;
     var words = req.body.words;
@@ -44,6 +43,9 @@ router.post('/', (req, res) => { // add new wordbook
             user: user.name
         })
     
+        User.update({_id: user_id}, {$inc: {points: 20}}, function (err, user) {
+            if (err) console.log(err)
+        }); // give 20 points to user who created wordbook
         new_wordbook.save(function (error) {
             if (error) { 
                 console.log(error) 

@@ -22,7 +22,6 @@ router.post('/', (req, res) => { // add new user
                 profile: undefined
             })
             console.log(new_user)
-            
             new_user.save(function (error) {
                 if (error) { 
                     console.log(error) 

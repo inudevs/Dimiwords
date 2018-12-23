@@ -118,7 +118,7 @@ export default {
         })
       .then(response => {
         console.log(response);
-        if (response.data.success) 
+        if (response.data.success)
           alert('단어를 추가했습니다.');
         else if (response.data.message.includes('exist')) 
           alert('정확히 같은 뜻의 단어가 이미 존재합니다.');

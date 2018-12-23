@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var auth = require('../../auth.js');
 var Word = require('../../models/words.js');
+var User = require('../../models/users.js');
 
 router.post('/', (req, res) => { // add new word
     var english = req.body.en;
@@ -40,9 +41,17 @@ router.post('/', (req, res) => { // add new word
                 user_id: user_id
             })
             // console.log(new_word)
-            
+            User.update({_id: user_id}, {$inc: {points: 10}}, function (err, user) {
+                if (err) console.log(err)
+            }); // give 10 points to user who created word
             new_word.save(function (error) {
-                if (error) { console.log(error) }
+                if (error) { 
+                    console.log(error) 
+                    res.send({
+                        success: false,
+                        message: 'Error'
+                    })
+                }
                 res.send({
                     success: true,
                     message: 'Word saved successfully'
