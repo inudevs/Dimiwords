@@ -2,9 +2,9 @@ var express = require('express');
 var router = express.Router();
 
 var login = require('./login');
-var points = require('./points');
+var check = require('./check');
 
 router.use('/login', login);
-router.use('/points', points);
+router.use('/check', check);
 
 module.exports = router;

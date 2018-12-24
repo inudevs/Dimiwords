@@ -2,7 +2,7 @@
     <div>
         <h1>랭킹</h1>
         <p class="new-info">
-            게임이 종료되고 맞춘 단어 하나당 <strong>1점</strong>, 새로운 단어를 등록하면 <strong>2점</strong>, 단어장을 등록하면 <strong>5점</strong>을 받아요
+            단어 하나를 맞출 때마다 <strong>1점</strong>, 새로운 단어를 등록하면 <strong>2점</strong>, 단어장을 등록하면 <strong>5점</strong>을 받아요
         </p>
         <div class="ranking">
             <table>
@@ -12,6 +12,7 @@
                         <td>NAME</td>
                         <td>INTRO</td>
                         <td>POINTS</td>
+                        <td>CORRECT(%)</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,6 +26,7 @@
                         </td>
                         <td>{{ user.intro }}</td>
                         <td>{{ user.points }}</td>
+                        <td>{{ percentage(user.accept, user.submit) }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -82,6 +84,10 @@ export default {
                 this.updateUsers();
             }
             this.page_rank+=20;
+        },
+        percentage: function (ac, sb) {
+            var p = (ac/sb)*100;
+            return (isNaN(p)) ? 100 : p;
         }
     }
 }

@@ -8,7 +8,7 @@
     <div id="progress">
       <div id="bar"><span id="time">{{ Math.floor((progress.current/progress.all || 0)*100) + '%' }}</span></div>
     </div>
-    <input id="guess" v-if="running" v-on:keyup="key" autocomplete="off">
+    <input id="guess" v-if="running" v-on:keyup.enter="key" autocomplete="off">
     <div v-if="!running">
       <i class="fas fa-redo fa-3x" v-on:click="refresh"
         v-on:mouseover="infoRefresh" v-on:mouseleave="infoClear"></i>
@@ -23,7 +23,7 @@
         v-on:mouseover="infoPass" v-on:mouseleave="infoClear"></i>
     </div>
     <div>
-      <p v-if="running" id="button-info" class="new-help running">주어진 뜻에 맞는 영단어를 입력해 주세요</p>
+      <p v-if="running" id="button-info" class="new-help running">주어진 뜻에 맞는 영단어를 입력하고 엔터를 눌러주세요</p>
       <p v-else id="button-info" class="new-help ending"></p>
     </div>
   </div>
@@ -62,33 +62,7 @@ export default {
   },
   methods: {
       key: function(event) {
-        var _input = document.getElementById('guess');
-        if (_input.value.toLowerCase() == this.current.en){
-          _input.value = this.current.en;
-          _input.disabled = true;
-          _input.style.borderStyle = 'solid';
-          _input.style.borderColor = '#EC008C';
-          setTimeout((src, item) => {
-            _input.value = '';
-            _input.disabled = false;
-            _input.focus();
-            _input.style.borderStyle = 'dotted';
-            _input.style.borderColor = 'rgb(37, 37, 37)';
-            this.move();
-            this.progress.current++;
-            if (this.words.length == 0){
-              _input.disabled = true;
-              this.running = false;
-              var _info = document.getElementById('button-info');
-              _info.innerHTML = `${this.progress.all}개 중 <strong>${this.progress.current}개 단어</strong>를 맞췄어요`;
-              this.updateScore()
-            }
-            else {
-              this.current = this.next();
-              this.current.ko = this.current.ko.join(', ');
-            }
-          }, 500);
-        }
+        this.checkAnswer(this.current._id);
       },
       shuffle: function (array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -132,7 +106,6 @@ export default {
       },
       infoClear: function () {
         var _info = document.getElementById('button-info');
-        console.log('running:', this.running)
         if (!this.running){
           _info.innerHTML = `${this.progress.all}개 중 ${this.progress.current}개 단어를 맞췄어요`;
         }
@@ -158,7 +131,7 @@ export default {
             this.running = false;
             var _info = document.getElementById('button-info');
             _info.innerHTML = `${this.progress.all}개 중 <strong>${this.progress.current}개 단어</strong>를 맞췄어요`;
-            this.updateScore()
+            alert(`총 ${this.progress.current}점이 지급되었습니다.`);
           }
           else {
             this.current = this.next();
@@ -166,20 +139,48 @@ export default {
           }
         }, 500);
       },
-      updateScore: function () {
+      checkAnswer: function (word) {
+        var _input = document.getElementById('guess');
+        var answer = _input.value;
+        var token = this.$session.get('jwt');
         this.$http.post(
-        '/api/auth/points', {
-          points: this.progress.current,
-          token: this.$session.get('jwt')
+        '/api/auth/check', {
+          word: word, 
+          answer: answer,
+          token: token
         }, { 
           headers: { 'Content-type': 'application/json' }
         })
         .then(response => {
+          // console.log(response)
           if (response.data.success) {
-            alert(`${this.progress.current} 포인트가 지급되었습니다.`);
+            _input.value = this.current.en;
+            _input.disabled = true;
+            _input.style.borderStyle = 'solid';
+            _input.style.borderColor = '#EC008C';
+            setTimeout((src, item) => {
+              _input.value = '';
+              _input.disabled = false;
+              _input.focus();
+              _input.style.borderStyle = 'dotted';
+              _input.style.borderColor = 'rgb(37, 37, 37)';
+              this.move();
+              this.progress.current++;
+              if (this.words.length == 0){
+                _input.disabled = true;
+                this.running = false;
+                var _info = document.getElementById('button-info');
+                _info.innerHTML = `${this.progress.all}개 중 <strong>${this.progress.current}개 단어</strong>를 맞췄어요`;
+                alert(`총 ${this.progress.current}점이 지급되었습니다.`);
+              }
+              else {
+                this.current = this.next();
+                this.current.ko = this.current.ko.join(', ');
+              }
+            }, 500);
           } else {
-            console.log(response)
-            alert('포인트 지급 중 에러가 발생했습니다. 관리자에게 문의하세요.');
+            var _info = document.getElementById('button-info');
+            _info.innerHTML = '<strong style="font-size:40px;">틀렸습니다</strong>';
           }
         });
       }

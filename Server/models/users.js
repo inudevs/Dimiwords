@@ -10,6 +10,8 @@ var UserSchema = new Schema({
     department: Number, // { 'eb': 0, 'dc': 1, 'wp': 2, 'hd': 3 }
     points: Number,
     profile: String, // profile picture URL
+    accept: Number, // user AC(num of Accepted answers)
+    submit: Number // num of user Submits
 });
 UserSchema.plugin(mongoosePaginate);
 
