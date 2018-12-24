@@ -26,7 +26,7 @@
                         </td>
                         <td>{{ user.intro }}</td>
                         <td>{{ user.points }}</td>
-                        <td>{{ percentage(user.accept, user.submit) }}</td>
+                        <td>{{ Math.round(percentage(user.accept, user.submit)*100)/100 + '%' }}</td>
                     </tr>
                 </tbody>
             </table>

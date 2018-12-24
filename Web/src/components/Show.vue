@@ -152,7 +152,7 @@ export default {
           headers: { 'Content-type': 'application/json' }
         })
         .then(response => {
-          // console.log(response)
+          console.log(response)
           if (response.data.success) {
             _input.value = this.current.en;
             _input.disabled = true;
