@@ -382,15 +382,26 @@ input[type=checkbox]{
     border-radius: 50%;
     object-fit: cover;
 }
-.ranking tr:nth-child(1) td.rank {
+.ranking tr.first:nth-child(1) td.rank {
     background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
 }
-.ranking tr:nth-child(2) td.rank {
+.ranking tr.first:nth-child(2) td.rank {
     background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
 }
-.ranking tr:nth-child(3) td.rank {
+.ranking tr.first:nth-child(3) td.rank {
     background-image: linear-gradient(to top, #c79081 0%, #dfa579 100%);
 }
-.ranking tr:nth-child(-n+3) td {
+.ranking tr.first:nth-child(-n+3) td {
     font-weight: bold;
+}
+.ranking .department {
+    color: white;
+    padding: 3px;
+    border-radius: 15px;
+    font-size: 7px;
+}
+.page {
+    font-size: 30px;
+    margin-left: 15px;
+    margin-right: 15px;
 }

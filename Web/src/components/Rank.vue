@@ -15,14 +15,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="user" v-for="(user, rank) in users">
-                        <td class="rank">{{ rank + 1 }}</td>
-                        <td class="name"><i class="fas fa-crown"></i> {{ user.name }}</td>
+                    <tr class="user" v-bind:class="{ first: page == 1 }" v-for="(user, rank) in users">
+                        <td class="rank">{{ page_rank + rank+1 }}</td>
+                        <td class="name">
+                            <i class="fas fa-crown" v-if="(page_rank + rank) < 3"></i> {{ user.name }}
+                            <span class="department" v-bind:style="{ backgroundColor: colors[user.department] }">
+                                {{ departments[user.department] }}
+                            </span>
+                        </td>
                         <td>{{ user.intro }}</td>
                         <td>{{ user.points }}</td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+        <div style="margin-bottom: 30px;">
+            <i class="fas fa-caret-left fa-3x" @click="pagePrev"
+                v-bind:style="{ 'color': (page > 1) ? 'black' : 'lightgray' }"></i>
+            <span class="page">{{ page }}</span>
+            <i class="fas fa-caret-right fa-3x" @click="pageNext"
+                v-bind:style="{ 'color': (page < this.page_max) ? 'black' : 'lightgray' }"></i>
         </div>
     </div>
 </template>
@@ -41,7 +53,10 @@ export default {
         return {
             users: [],
             page: 1,
-            page_max: undefined
+            page_max: undefined,
+            page_rank: 0,
+            departments: ['EB', 'DC', 'WP', 'HD'],
+            colors: ['#424242', '#FF0080', '#9A2EFE', '#3A01DF']
         }
     },
     methods: {
@@ -54,6 +69,20 @@ export default {
                 console.log(this.users)
                 if (this.page_max == null) this.page_max = response.data.result.pages
             })
+        },
+        pagePrev: function () { // previous page
+            if (this.page > 1) { // only if prev page is available
+                this.page--;
+                this.updateUsers();
+            }
+            this.page_rank-=20;
+        },
+        pageNext: function () { // next page
+            if (this.page < this.page_max) { // only if next page is available
+                this.page++;
+                this.updateUsers();
+            }
+            this.page_rank+=20;
         }
     }
 }
