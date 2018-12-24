@@ -23,10 +23,12 @@
     <div v-if="!Object.keys(wordbooks).length">
       <span>단어장이 없어요!</span>
     </div>
-    <div v-else>
-      <button @click="pagePrev">뒤 페이지</button>
-      <span>{{ this.page }}</span>
-      <button @click="pageNext">앞 페이지</button>
+    <div style="margin-bottom: 30px;">
+        <i class="fas fa-caret-left fa-3x" @click="pagePrev"
+            v-bind:style="{ 'color': (page > 1) ? 'black' : 'lightgray' }"></i>
+        <span class="page">{{ page }}</span>
+        <i class="fas fa-caret-right fa-3x" @click="pageNext"
+            v-bind:style="{ 'color': (page < this.page_max) ? 'black' : 'lightgray' }"></i>
     </div>
     <router-link :to="{ name: 'new_wordbook' }" class="link new-wordbook">
       단어장 추가하기

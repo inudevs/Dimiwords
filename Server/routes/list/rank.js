@@ -8,7 +8,7 @@ router.get('/', function (req, res, next) { // list of all words
     User.paginate({}, {
         page: page, 
         limit: 20, 
-        select: '-password', 
+        select: '-_id -email -password', 
         sort: {points:-1}
     }, function(error, pageCount, paginatedResults) {
         if (error) {

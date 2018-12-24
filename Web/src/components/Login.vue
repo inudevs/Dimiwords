@@ -2,7 +2,7 @@
     <div>
         <h1>로그인</h1>
         <p>
-            <router-link :to="{ name: 'join' }">가입하기</router-link>
+            <router-link class="button" :to="{ name: 'join' }">가입하기</router-link>
         </p>
         <div class="join">
             <div class="join-form">
@@ -10,7 +10,7 @@
                 <input v-model.trim="password" type="password" placeholder="비밀번호"><br>
             </div>
         </div>
-        <button @click="login">로그인</button>
+        <button class="login-user" @click="login">로그인</button>
     </div>
 </template>
 

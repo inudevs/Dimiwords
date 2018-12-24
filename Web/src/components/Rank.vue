@@ -66,7 +66,6 @@ export default {
             })
             .then((response) => {
                 this.users = response.data.result.docs
-                console.log(this.users)
                 if (this.page_max == null) this.page_max = response.data.result.pages
             })
         },

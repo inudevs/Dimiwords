@@ -299,7 +299,7 @@ input[type=checkbox]{
     border-radius: 5px;
 }
 .department button:focus { 
-    outline:0 !important; 
+    outline: 0 !important; 
 }
 .department .first {
     margin-bottom: 5px;
@@ -404,4 +404,49 @@ input[type=checkbox]{
     font-size: 30px;
     margin-left: 15px;
     margin-right: 15px;
+}
+/* app.vue profile buttons */
+.profile button {
+    color: #EC008C;
+    border: 3px solid #EC008C;
+    border-radius: 5px;
+    font-size: 20px;
+}
+.profile button:focus { 
+    outline: 0 !important; 
+    color: #FC6767;
+    border-color: #FC6767;
+}
+.profile button:hover {
+    color: #FC6767;
+    border-color: #FC6767;
+}
+/* login/join buttons */
+a.button {
+    color: #EC008C;
+    border: 3px solid #EC008C;
+    border-radius: 5px;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 3px;
+}
+a.button:hover {
+    color: #FC6767;
+    border-color: #FC6767;
+}
+/* login */
+.login-user {
+    display: inline-block;
+    width: 30%;
+    color: black;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border: 3px rgb(37, 37, 37) solid;
+    border-radius: 25px;
+    font-size: 25px;
+    font-family: 'Yeon Sung', cursive;
+}
+.login-user:hover {
+    color: white;
+    background: black;
 }

@@ -1,7 +1,9 @@
 <template>
     <div>
         <h1>회원가입</h1>
-        <router-link :to="{ name: 'login' }">로그인</router-link>
+        <p>
+            <router-link class="button" :to="{ name: 'login' }">로그인</router-link>
+        </p>
         <p>
             <strong>한국디지털미디어고등학교</strong> 학생(신입생)만 가입할 수 있어요!<br>
             가입 정보가 올바르지 않은 경우 계정이 삭제될 수 있답니다 :(<br>
@@ -89,7 +91,7 @@ export default {
                     'intro': this.intro,
                     'department': this.department
                 };
-                console.log(user);
+                // console.log(user);
 
                 // add to DB
                 this.$http.post(

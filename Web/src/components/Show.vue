@@ -108,7 +108,6 @@ export default {
             clearInterval(id);
           } else {
             bar.style.width = (this.progress.current/this.progress.all)*100 + '%';
-            // console.log(this.progress)
           }
         }, 100);
       },
