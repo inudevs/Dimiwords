@@ -43,52 +43,52 @@
 
 <script>
 export default {
-    beforeCreate: function () {
-        if (!this.$session.exists()) {
-        this.$router.push('/user/login')
-        }
-    },
-    created () {
-        this.updateUsers();
-    },
-    data () {
-        return {
-            users: [],
-            page: 1,
-            page_max: undefined,
-            page_rank: 0,
-            departments: ['EB', 'DC', 'WP', 'HD'],
-            colors: ['#424242', '#FF0080', '#9A2EFE', '#3A01DF']
-        }
-    },
-    methods: {
-        updateUsers: function () {
-            this.$http.get('/api/list/rank', {
-                params: {page: this.page}
-            })
-            .then((response) => {
-                this.users = response.data.result.docs
-                if (this.page_max == null) this.page_max = response.data.result.pages
-            })
-        },
-        pagePrev: function () { // previous page
-            if (this.page > 1) { // only if prev page is available
-                this.page--;
-                this.updateUsers();
-            }
-            this.page_rank-=20;
-        },
-        pageNext: function () { // next page
-            if (this.page < this.page_max) { // only if next page is available
-                this.page++;
-                this.updateUsers();
-            }
-            this.page_rank+=20;
-        },
-        percentage: function (ac, sb) {
-            var p = (ac/sb)*100;
-            return (isNaN(p)) ? 100 : p;
-        }
+  beforeCreate: function () {
+    if (!this.$session.exists()) {
+      this.$router.push('/user/login')
     }
+  },
+  created () {
+    this.updateUsers()
+  },
+  data () {
+    return {
+      users: [],
+      page: 1,
+      page_max: undefined,
+      page_rank: 0,
+      departments: ['EB', 'DC', 'WP', 'HD'],
+      colors: ['#424242', '#FF0080', '#9A2EFE', '#3A01DF']
+    }
+  },
+  methods: {
+    updateUsers: function () {
+      this.$http.get('/api/list/rank', {
+        params: { page: this.page }
+      })
+        .then((response) => {
+          this.users = response.data.result.docs
+          if (this.page_max == null) this.page_max = response.data.result.pages
+        })
+    },
+    pagePrev: function () { // previous page
+      if (this.page > 1) { // only if prev page is available
+        this.page--
+        this.updateUsers()
+      }
+      this.page_rank -= 20
+    },
+    pageNext: function () { // next page
+      if (this.page < this.page_max) { // only if next page is available
+        this.page++
+        this.updateUsers()
+      }
+      this.page_rank += 20
+    },
+    percentage: function (ac, sb) {
+      var p = (ac / sb) * 100
+      return (isNaN(p)) ? 100 : p
+    }
+  }
 }
 </script>

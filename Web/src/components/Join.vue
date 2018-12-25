@@ -20,7 +20,7 @@
                         <i class="fas fa-video"></i> 디컨
                     </button>
                 </div>
-                <div class="second">                
+                <div class="second">
                     <button id="wp-button" @click="selectDepartment('wp')">
                         <i class="fas fa-code"></i> 웹플
                     </button>
@@ -50,7 +50,7 @@
                 <p class="new-help">모든 필드에 값을 <strong>입력</strong>해 주세요</p>
             </div>
             <div v-else>
-                <button class="new-user" @click="addUser">가입하기</button>             
+                <button class="new-user" @click="addUser">가입하기</button>
             </div>
         </div>
     </div>
@@ -58,81 +58,76 @@
 
 <script>
 export default {
-    beforeCreate: function () {
-        if (this.$session.exists()) {
-            this.$router.push('/')
-        }
-    },
-    data () {
-        return {
-            name: '',
-            password: '',
-            intro: '',
-            email: '',
-            department: undefined,
-            running: false,
-            colors: {
-                'eb': '#424242',
-                'dc': '#FF0080',
-                'wp': '#9A2EFE',
-                'hd': '#3A01DF'
-            }
-        }
-    },
-    methods: {
-        addUser: function () {
-            if (!this.name || !this.intro || !this.password || !this.email || !this.department)
-                alert('모든 필드에 값을 입력해 주세요');
-            else {
-                var user = {
-                    'name': this.name,
-                    'password': this.password, 
-                    'email': this.email, 
-                    'intro': this.intro,
-                    'department': this.department
-                };
-                // console.log(user);
-
-                // add to DB
-                this.$http.post(
-                    '/api/create/user', user, { 
-                    headers: { 'Content-type': 'application/json' }
-                    })
-                .then(response => {
-                    console.log(response);
-                    if (!response.data.success) {
-                        if (response.data.message.includes('exist'))
-                            alert('같은 이메일의 사용자가 이미 존재합니다.');
-                        else alert('회원가입 도중 에러가 발생했습니다.');
-                        return
-                    }
-                    
-                    alert('회원가입에 성공했습니다! 로그인해 주세요.');
-                    this.$router.push('/user/login');                
-                });
-            }
-        },
-        changeColor: function (element) {
-            element.style.color = element.style.borderColor = '#C8C8C8';
-            element.style.backgroundColor = 'white';
-            element.style.borderColor = '#C8C8C8';
-        },
-        selectDepartment: function (department) {
-            this.department = department;
-            const departments = ['eb', 'dc', 'wp', 'hd'];
-            for(var i = 0; i < departments.length; i++) {
-                var item = departments[i];
-                if (item !== department)
-                    this.changeColor(document.getElementById(item + '-button'));
-            }
-            var button = document.getElementById(department + '-button');
-            button.style.color = 'white';
-            button.style.backgroundColor = button.style.borderColor = this.colors[department];
-            var elements = document.getElementsByTagName('input');
-            for(var i = 0; i < elements.length; i++){
-                elements[i].className = department;
-            }
-        }
+  beforeCreate: function () {
+    if (this.$session.exists()) {
+      this.$router.push('/')
     }
+  },
+  data () {
+    return {
+      name: '',
+      password: '',
+      intro: '',
+      email: '',
+      department: undefined,
+      running: false,
+      colors: {
+        'eb': '#424242',
+        'dc': '#FF0080',
+        'wp': '#9A2EFE',
+        'hd': '#3A01DF'
+      }
+    }
+  },
+  methods: {
+    addUser: function () {
+      if (!this.name || !this.intro || !this.password || !this.email || !this.department) { alert('모든 필드에 값을 입력해 주세요') } else {
+        var user = {
+          'name': this.name,
+          'password': this.password,
+          'email': this.email,
+          'intro': this.intro,
+          'department': this.department
+        }
+        // console.log(user);
+
+        // add to DB
+        this.$http.post(
+          '/api/create/user', user, {
+            headers: { 'Content-type': 'application/json' }
+          })
+          .then(response => {
+            console.log(response)
+            if (!response.data.success) {
+              if (response.data.message.includes('exist')) { alert('같은 이메일의 사용자가 이미 존재합니다.') } else alert('회원가입 도중 에러가 발생했습니다.')
+              return
+            }
+
+            alert('회원가입에 성공했습니다! 로그인해 주세요.')
+            this.$router.push('/user/login')
+          })
+      }
+    },
+    changeColor: function (element) {
+      element.style.color = element.style.borderColor = '#C8C8C8'
+      element.style.backgroundColor = 'white'
+      element.style.borderColor = '#C8C8C8'
+    },
+    selectDepartment: function (department) {
+      this.department = department
+      const departments = ['eb', 'dc', 'wp', 'hd']
+      for (var i = 0; i < departments.length; i++) {
+        var item = departments[i]
+        if (item !== department) { this.changeColor(document.getElementById(item + '-button')) }
+      }
+      var button = document.getElementById(department + '-button')
+      button.style.color = 'white'
+      button.style.backgroundColor = button.style.borderColor = this.colors[department]
+      var elements = document.getElementsByTagName('input')
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].className = department
+      }
+    }
+  }
 }
 </script>

@@ -11,36 +11,36 @@ import '../assets/css/style.css'
 Vue.use(Router)
 
 export default new Router({
-    routes: [
-        {
-            path: '/',
-            name: 'index',
-            component: Index
-        },
-        {
-            path: '/:id',
-            name: 'show',
-            component: Show
-        },
-        {
-            path: '/new/wordbook',
-            name: 'new_wordbook',
-            component: New
-        },
-        {
-            path: '/user/login',
-            name: 'login',
-            component: Login
-        },
-        {
-            path: '/user/join',
-            name: 'join',
-            component: Join
-        },
-        {
-            path: '/user/rank',
-            name: 'rank',
-            component: Rank
-        }
-    ]
+  routes: [
+    {
+      path: '/',
+      name: 'index',
+      component: Index
+    },
+    {
+      path: '/:id',
+      name: 'show',
+      component: Show
+    },
+    {
+      path: '/new/wordbook',
+      name: 'new_wordbook',
+      component: New
+    },
+    {
+      path: '/user/login',
+      name: 'login',
+      component: Login
+    },
+    {
+      path: '/user/join',
+      name: 'join',
+      component: Join
+    },
+    {
+      path: '/user/rank',
+      name: 'rank',
+      component: Rank
+    }
+  ]
 })

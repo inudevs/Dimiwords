@@ -37,19 +37,19 @@ export default {
     }
   },
   created: function () {
-    var id = this.$route.params.id;
+    var id = this.$route.params.id
     this.$http.get(`/api/get/wordbook/${id}`)
-    .then((response) => {
-      this.wordbook = response.data.wordbook;
-      this.words = this.wordbook.words;
-      this.progress.all = this.words.length;
-      this.progress.current = 0;
-      this.current = this.next();
-      this.current.ko = this.current.ko.join(', ');
-      this.running = true;
-      document.getElementById('guess').focus();
-      this.move();
-    })
+      .then((response) => {
+        this.wordbook = response.data.wordbook
+        this.words = this.wordbook.words
+        this.progress.all = this.words.length
+        this.progress.current = 0
+        this.current = this.next()
+        this.current.ko = this.current.ko.join(', ')
+        this.running = true
+        document.getElementById('guess').focus()
+        this.move()
+      })
   },
   data: function () {
     return {
@@ -61,129 +61,126 @@ export default {
     }
   },
   methods: {
-      key: function(event) {
-        this.checkAnswer(this.current._id);
-      },
-      shuffle: function (array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
+    key: function (event) {
+      this.checkAnswer(this.current._id)
+    },
+    shuffle: function (array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]
+      }
+    },
+    next: function () {
+      this.shuffle(this.words)
+      return this.words.pop()
+    },
+    move: function (bar) {
+      var bar = document.getElementById('bar')
+      var width = 1
+      var id = setInterval((src, item) => {
+        if (width >= 100) {
+          clearInterval(id)
+        } else {
+          bar.style.width = (this.progress.current / this.progress.all) * 100 + '%'
         }
-      },
-      next: function () {
-        this.shuffle(this.words);
-        return this.words.pop();
-      },
-      move: function (bar) {
-        var bar = document.getElementById('bar');
-        var width = 1;
-        var id = setInterval((src, item) => {
-          if (width >= 100) {
-            clearInterval(id);
-          } else {
-            bar.style.width = (this.progress.current/this.progress.all)*100 + '%';
-          }
-        }, 100);
-      },
-      refresh: function () {
-        this.$router.go();
-      },
-      infoHint: function () {
-        var _info = document.getElementById('button-info');
-        _info.innerHTML = '<strong>? 버튼</strong>을 누르면 힌트가 나와요';
-      },
-      infoPass: function () {
-        var _info = document.getElementById('button-info');
-        _info.innerHTML = '<strong>X 버튼</strong>을 누르면 모르는 단어를 패스할 수 있어요';
-      },
-      infoRefresh: function () {
-        var _info = document.getElementById('button-info');
-        _info.innerHTML = '<strong>다시하기 버튼</strong>을 누르면 단어장을 다시 풀 수 있어요';
-      },
-      infoMenu: function () {
-        var _info = document.getElementById('button-info');
-        _info.innerHTML = '<strong>메뉴 버튼</strong>을 누르면 단어장 목록으로 돌아갈 수 있어요';
-      },
-      infoClear: function () {
-        var _info = document.getElementById('button-info');
-        if (!this.running){
-          _info.innerHTML = `${this.progress.all}개 중 ${this.progress.current}개 단어를 맞췄어요`;
+      }, 100)
+    },
+    refresh: function () {
+      this.$router.go()
+    },
+    infoHint: function () {
+      var _info = document.getElementById('button-info')
+      _info.innerHTML = '<strong>? 버튼</strong>을 누르면 힌트가 나와요'
+    },
+    infoPass: function () {
+      var _info = document.getElementById('button-info')
+      _info.innerHTML = '<strong>X 버튼</strong>을 누르면 모르는 단어를 패스할 수 있어요'
+    },
+    infoRefresh: function () {
+      var _info = document.getElementById('button-info')
+      _info.innerHTML = '<strong>다시하기 버튼</strong>을 누르면 단어장을 다시 풀 수 있어요'
+    },
+    infoMenu: function () {
+      var _info = document.getElementById('button-info')
+      _info.innerHTML = '<strong>메뉴 버튼</strong>을 누르면 단어장 목록으로 돌아갈 수 있어요'
+    },
+    infoClear: function () {
+      var _info = document.getElementById('button-info')
+      if (!this.running) {
+        _info.innerHTML = `${this.progress.all}개 중 ${this.progress.current}개 단어를 맞췄어요`
+      } else {
+        _info.innerHTML = '주어진 뜻에 맞는 영단어를 입력해 주세요'
+      }
+    },
+    hint: function () {
+      alert(this.current.en[0] + '로 시작하는 단어랍니다!')
+    },
+    pass: function () {
+      var _input = document.getElementById('guess')
+      _input.value = this.current.en
+      _input.disabled = true
+      _input.style.borderStyle = 'solid'
+      setTimeout((src, item) => {
+        _input.value = ''
+        _input.disabled = false
+        _input.focus()
+        _input.style.borderStyle = 'dotted'
+        if (this.words.length === 0) {
+          _input.disabled = true
+          this.running = false
+          var _info = document.getElementById('button-info')
+          _info.innerHTML = `${this.progress.all}개 중 <strong>${this.progress.current}개 단어</strong>를 맞췄어요`
+          alert(`총 ${this.progress.current}점이 지급되었습니다.`)
+        } else {
+          this.current = this.next()
+          this.current.ko = this.current.ko.join(', ')
         }
-        else {
-          _info.innerHTML = '주어진 뜻에 맞는 영단어를 입력해 주세요';
-        }
-      },
-      hint: function () {
-        alert(this.current.en[0] + '로 시작하는 단어랍니다!');
-      },
-      pass: function () {
-        var _input = document.getElementById('guess');
-        _input.value = this.current.en;
-        _input.disabled = true;
-        _input.style.borderStyle = 'solid';
-        setTimeout((src, item) => {
-          _input.value = '';
-          _input.disabled = false;
-          _input.focus();
-          _input.style.borderStyle = 'dotted';
-          if (this.words.length == 0){
-            _input.disabled = true;
-            this.running = false;
-            var _info = document.getElementById('button-info');
-            _info.innerHTML = `${this.progress.all}개 중 <strong>${this.progress.current}개 단어</strong>를 맞췄어요`;
-            alert(`총 ${this.progress.current}점이 지급되었습니다.`);
-          }
-          else {
-            this.current = this.next();
-            this.current.ko = this.current.ko.join(', ');
-          }
-        }, 500);
-      },
-      checkAnswer: function (word) {
-        var _input = document.getElementById('guess');
-        var answer = _input.value;
-        var token = this.$session.get('jwt');
-        this.$http.post(
+      }, 500)
+    },
+    checkAnswer: function (word) {
+      var _input = document.getElementById('guess')
+      var answer = _input.value
+      var token = this.$session.get('jwt')
+      this.$http.post(
         '/api/auth/check', {
-          word: word, 
+          word: word,
           answer: answer,
           token: token
-        }, { 
+        }, {
           headers: { 'Content-type': 'application/json' }
         })
         .then(response => {
           console.log(response)
           if (response.data.success) {
-            _input.value = this.current.en;
-            _input.disabled = true;
-            _input.style.borderStyle = 'solid';
-            _input.style.borderColor = '#EC008C';
+            _input.value = this.current.en
+            _input.disabled = true
+            _input.style.borderStyle = 'solid'
+            _input.style.borderColor = '#EC008C'
             setTimeout((src, item) => {
-              _input.value = '';
-              _input.disabled = false;
-              _input.focus();
-              _input.style.borderStyle = 'dotted';
-              _input.style.borderColor = 'rgb(37, 37, 37)';
-              this.move();
-              this.progress.current++;
-              if (this.words.length == 0){
-                _input.disabled = true;
-                this.running = false;
-                var _info = document.getElementById('button-info');
-                _info.innerHTML = `${this.progress.all}개 중 <strong>${this.progress.current}개 단어</strong>를 맞췄어요`;
-                alert(`총 ${this.progress.current}점이 지급되었습니다.`);
+              _input.value = ''
+              _input.disabled = false
+              _input.focus()
+              _input.style.borderStyle = 'dotted'
+              _input.style.borderColor = 'rgb(37, 37, 37)'
+              this.move()
+              this.progress.current++
+              if (this.words.length === 0) {
+                _input.disabled = true
+                this.running = false
+                var _info = document.getElementById('button-info')
+                _info.innerHTML = `${this.progress.all}개 중 <strong>${this.progress.current}개 단어</strong>를 맞췄어요`
+                alert(`총 ${this.progress.current}점이 지급되었습니다.`)
+              } else {
+                this.current = this.next()
+                this.current.ko = this.current.ko.join(', ')
               }
-              else {
-                this.current = this.next();
-                this.current.ko = this.current.ko.join(', ');
-              }
-            }, 500);
+            }, 500)
           } else {
-            var _info = document.getElementById('button-info');
-            _info.innerHTML = '<strong style="font-size:40px;">틀렸습니다</strong>';
+            var _info = document.getElementById('button-info')
+            _info.innerHTML = '<strong style="font-size:40px;">틀렸습니다</strong>'
           }
-        });
-      }
+        })
+    }
   }
 }
 </script>
