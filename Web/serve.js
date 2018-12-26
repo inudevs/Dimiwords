@@ -2,6 +2,7 @@ const express = require('express')
 const serveStatic = require('serve-static')
 const path = require('path')
 const fs = require('fs')
+const http = require('http')
 const https = require('https')
 
 const app = express()
@@ -22,3 +23,8 @@ var port = 443
 https.createServer(options, app).listen(port, function () {
   console.log('Frontend server listening on port ' + port)
 })
+
+http.createServer(function (req, res) {
+  res.writeHead(301, { 'Location': 'https://' + req.headers['host'] + req.url })
+  res.end()
+}).listen(80)
