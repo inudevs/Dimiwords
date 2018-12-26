@@ -75,15 +75,15 @@ export default {
       if (this.page > 1) { // only if prev page is available
         this.page--
         this.updateUsers()
+        this.page_rank -= 20
       }
-      this.page_rank -= 20
     },
     pageNext: function () { // next page
       if (this.page < this.page_max) { // only if next page is available
         this.page++
         this.updateUsers()
+        this.page_rank += 20
       }
-      this.page_rank += 20
     },
     percentage: function (ac, sb) {
       var p = (ac / sb) * 100
