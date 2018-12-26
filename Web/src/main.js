@@ -8,7 +8,7 @@ import VModal from 'vue-js-modal'
 import VueSession from 'vue-session'
 
 Vue.prototype.$http = axios.create({
-  baseURL: 'http://localhost:3000/' // api server url
+  baseURL: 'https://dimiwords.tk:5000/' // api server url
 })
 
 Vue.config.productionTip = false

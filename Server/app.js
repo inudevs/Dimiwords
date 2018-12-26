@@ -4,6 +4,8 @@ var path = require('path')
 var logger = require('morgan')
 var bodyParser = require('body-parser')
 var cors = require('cors')
+var fs = require('fs')
+var https = require('https')
 
 var router = require('./routes')
 
@@ -50,6 +52,17 @@ db.on('error', console.error.bind(console, 'connection error'))
 
 db.once('open', function (callback) {
   console.log('Connection Succeeded')
+})
+
+var options = {
+  key: fs.readFileSync(path.resolve(__dirname, 'config/ssl/private.key')),
+  cert: fs.readFileSync(path.resolve(__dirname, 'config/ssl/certificate.crt')),
+  ca: fs.readFileSync(path.resolve(__dirname, 'config/ssl/ca_bundle.crt'))
+}
+
+var port = 5000
+https.createServer(options, app).listen(port, function () {
+  console.log('API server listening on port ' + port)
 })
 
 module.exports = app

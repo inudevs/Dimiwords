@@ -17,11 +17,11 @@
 ```bash
 cd Server
 npm install
-forever start ./bin/www
+sudo forever start ./bin/www
 cd ../Web
 npm install
 npm run-script build
-sudo forever start -c "serve -l 80" ./dist
+sudo forever start serve.js
 ```
 
 ## Lint 
