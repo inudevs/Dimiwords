@@ -126,11 +126,7 @@ export default {
         _input.focus()
         _input.style.borderStyle = 'dotted'
         if (this.words.length === 0) {
-          _input.disabled = true
-          this.running = false
-          var _info = document.getElementById('button-info')
-          _info.innerHTML = `${this.progress.all}개 중 <strong>${this.progress.current}개 단어</strong>를 맞췄어요`
-          alert(`총 ${this.progress.current}점이 지급되었습니다.`)
+          this.end()
         } else {
           this.current = this.next()
           this.current.ko = this.current.ko.join(', ')
@@ -165,21 +161,34 @@ export default {
               this.move()
               this.progress.current++
               if (this.words.length === 0) {
-                _input.disabled = true
-                this.running = false
-                var _info = document.getElementById('button-info')
-                _info.innerHTML = `${this.progress.all}개 중 <strong>${this.progress.current}개 단어</strong>를 맞췄어요`
-                alert(`총 ${this.progress.current}점이 지급되었습니다.`)
+                this.end()
               } else {
                 this.current = this.next()
                 this.current.ko = this.current.ko.join(', ')
               }
             }, 500)
-          } else {
+          } else { // wrong
             var _info = document.getElementById('button-info')
             _info.innerHTML = '<strong style="font-size:40px;">틀렸습니다</strong>'
+            _input.style.color = '#EC008C'
+            _input.style.borderStyle = 'solid'
+            _input.style.borderColor = '#EC008C'
+            setTimeout((src, item) => {
+              _info.innerHTML = '주어진 뜻에 맞는 영단어를 입력해 주세요'
+              _input.style.color = 'black'
+              _input.style.borderStyle = 'dotted'
+              _input.style.borderColor = 'rgb(37, 37, 37)'
+            }, 800)
           }
         })
+    },
+    end: function () {
+      var _input = document.getElementById('guess')
+      _input.disabled = true
+      this.running = false
+      var _info = document.getElementById('button-info')
+      _info.innerHTML = `${this.progress.all}개 중 <strong>${this.progress.current}개 단어</strong>를 맞췄어요`
+      alert(`총 ${this.progress.current}점이 지급되었습니다.`)
     }
   }
 }
