@@ -1,4 +1,5 @@
-# dimiwords-web
+# Dimiwords-Web
+Dimiwords Web App with Vue.js
 
 ## Setup API server URL
 

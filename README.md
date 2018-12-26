@@ -12,3 +12,12 @@ npm install
 npm run-script build
 sudo forever start -c "serve -l 80" ./dist
 ```
+
+## Lint 
+
+```bash
+cd Server
+standard --fix
+cd ../Web
+eslint --fix --ext .js,.vue src
+```
