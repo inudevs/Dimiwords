@@ -37,7 +37,8 @@ export default {
         if (response.status === 200 && response.data.success) {
           this.$session.start()
           this.$session.set('jwt', response.data.token)
-          this.$session.set('user', response.data.user)
+          const user = response.data.user
+          this.$session.set('user', user)
           this.$router.push('/')
           this.$router.go()
         } else {

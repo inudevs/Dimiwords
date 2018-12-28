@@ -1,18 +1,23 @@
 <template>
   <div class="body">
     <h1>단어장 목록</h1>
-    <div v-for="wordbook in wordbooks" class="wordbook rounded-corners-gradient-borders">
+    <div v-for="wordbook in wordbooks" class="wordbook rounded-corners-gradient-borders"
+      v-bind:style="getGradientStyle()">
       <router-link :to="{ name: 'show', params: { id: wordbook._id }}" class="link">
         <div class="header">
-          <strong class="title">{{ wordbook.name }}</strong>
+          <strong class="title" v-bind:class="{ 'blue': (theme === 'skyblue') }">
+            {{ (!wordbook.name) ? '제목 없음' : wordbook.name }}
+          </strong>
           <p class="intro">
-            {{ wordbook.intro }}<br>
+            {{ (!wordbook.intro) ? '설명 없음' : wordbook.intro }}<br>
             <strong class="author">{{ '-' + wordbook.user + '-' }}</strong>
           </p>
         </div>
         <div class="words">
           <span v-for="word in wordbook.words">
-            <a class="word" href="#">{{ word.en }}</a>&nbsp;
+            <a class="word" href="#" v-bind:class="{ 'blue': (theme === 'skyblue') }">
+              {{ word.en }}
+            </a>&nbsp;
           </span>
           <router-link v-if="wordbook.len > 5" :to="{ name: 'show', params: { id: wordbook._id }}">
             <i class="fas fa-ellipsis-h"></i>
@@ -45,6 +50,8 @@ export default {
   },
   created () {
     this.updateWordbooks()
+    // this.color = this.$session.get('color')
+    // this.subject = ['eb', 'dc', 'wp', 'hd'][this.$session.get('user').department]
   },
   data () {
     return {
@@ -74,6 +81,21 @@ export default {
         this.page++
         this.updateWordbooks()
       }
+    },
+    getGradientStyle: function () {
+      return {
+        'border-image': `linear-gradient(to right, ${this.color[0]}, ${this.color[1]})`
+      }
+    }
+  },
+  props: {
+    theme: {
+      type: String,
+      required: true
+    },
+    color: {
+      type: Array,
+      required: true
     }
   }
 }

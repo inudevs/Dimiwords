@@ -1,7 +1,11 @@
 <template>
   <div id="app">
-    <Navigation></Navigation>
-    <router-view/>
+    <Navigation :color="color"></Navigation>
+    <router-view :color="color" :theme="theme"/>
+    <toggle-button class="theme-switch" v-if="this.$session.exists()"
+      :value="(theme === 'magenta')" @change="changeTheme()"
+      :color="{checked: '#EC008C', unchecked: '#552FC9'}" :sync="true"
+      width="100" height="40" />
   </div>
 </template>
 
@@ -11,6 +15,32 @@ export default {
   name: 'App',
   components: {
     'Navigation': Navigation
+  },
+  data () {
+    return {
+      theme: 'magenta',
+      color: ['#EC008C', '#FC6767']
+    }
+  },
+  methods: {
+    changeTheme: function () {
+      if (this.theme === 'magenta') {
+        this.theme = 'skyblue'
+        this.color = ['#552FC9', '#4296DB']
+      } else {
+        this.theme = 'magenta'
+        this.color = ['#EC008C', '#FC6767']
+      }
+    },
+    getThemeStyle: function (theme) {
+      return {
+        'background-image': `linear-gradient(to right, ${theme[0]}, ${theme[1]})`,
+        'border-color': theme[0]
+      }
+    },
+    applyTheme: function (theme) {
+      this.color = theme
+    }
   }
 }
 </script>

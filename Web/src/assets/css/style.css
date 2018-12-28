@@ -4,7 +4,7 @@ input:focus, textarea:focus, select:focus {
     outline: none;
 }
 .link {
-    text-decoration: none;
+    text-decoration: none !important;
 }
 .body {
     text-align: center;
@@ -16,21 +16,25 @@ input:focus, textarea:focus, select:focus {
     margin-bottom: 10px;
     background: none;
     border: 7px solid transparent;
-    border-image: linear-gradient(to left, #EC008C, #FC6767);
+    /* border-image: linear-gradient(to left, #EC008C, #FC6767); */
     border-image-slice: 1;
 }
 .wordbook .header {
     margin-top: 5px;
 }
 .wordbook .title {
-    color: #EC008C;
+    font-size: 32px;
+    text-decoration: none;
+    margin-top: 5px;
     background: -webkit-linear-gradient(135deg, #EC008C, #FC6767);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 32px;
-    text-decoration: none;
-    margin-top: 5px;
+}
+.wordbook .title.blue {
+    background: -webkit-linear-gradient(135deg, #552FC9, #4296DB);
+    background-clip: text;
+    -webkit-background-clip: text;
 }
 .wordbook .author {
     color: black;
@@ -55,11 +59,26 @@ input:focus, textarea:focus, select:focus {
     text-decoration: none;
 }
 .word:hover {
+    text-decoration: none !important;
     color: white;
     background: #EC008C;
     background: -webkit-linear-gradient(to right, #EC008C, #FC6767);
     background: linear-gradient(to right, #EC008C, #FC6767);
 }
+/* word style for skyblue theme */
+.word.blue {
+    color: rgb(85, 47, 201);
+    font-weight: 450;
+    border: 2px solid rgb(85, 47, 201);
+}
+.word.blue:hover {
+    text-decoration: none !important;
+    color: white;
+    background: rgb(85, 47, 201);
+    background: -webkit-linear-gradient(to right, rgb(85, 47, 201), #4296db);
+    background: linear-gradient(to right, rgb(85, 47, 201), #4296db);
+}
+/* word with default gradient */
 .word.gradient {
     color: white;
     background: #EC008C;
@@ -94,7 +113,7 @@ input:focus, textarea:focus, select:focus {
     padding: 7px;
 }
 #bar {
-    display:table;
+    display:table; 
     width: 1%;
     height: 30px;
     background-color: #EC008C;
@@ -122,7 +141,7 @@ input:focus, textarea:focus, select:focus {
     width: 30%;
     color: black;
     margin-top: 25px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     border: 3px rgb(37, 37, 37) solid;
     border-radius: 25px;
     font-size: 25px;
@@ -161,7 +180,7 @@ input[type=checkbox]{
     border-radius: 25px;
     font-size: 22px;
     font-family: 'Yeon Sung', cursive;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     margin-top: 20px;
 }
 .new-word:hover {
@@ -254,6 +273,11 @@ input[type=checkbox]{
     border: 3px #EC008C solid;
     border-radius: 10px;
 }
+@media (max-width: 755px) {
+    .join-form input {
+        width: 80%;
+    }
+}
 .join-form input::placeholder {
     color: #EC008C;
     font-size: 20px;
@@ -274,7 +298,7 @@ input[type=checkbox]{
     width: 30%;
     color: black;
     margin-top: 25px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     border: 3px rgb(37, 37, 37) solid;
     border-radius: 25px;
     font-size: 25px;
@@ -419,6 +443,11 @@ a.button:hover {
     font-size: 25px;
     font-family: 'Yeon Sung', cursive;
 }
+@media (max-width: 755px) {
+    .login-user {
+        width: 80%;
+    }
+}
 .login-user:hover {
     color: white;
     background: black;
@@ -448,8 +477,6 @@ span.dimiwords {
 }
 .profile .name {
     color: black;
-    /* font-size: 25px; */
-    /* font-weight: bold; */
 }
 .profile .department {
     font-weight: bold;
@@ -461,11 +488,10 @@ span.dimiwords {
     border-radius: 5px;
     font-size: 15px;
 }
-.bg-primary {
-    /* background-color: #007bff !important; */
-    background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
-}
 .navbar-brand {
     display: flex !important;
     align-items: center;
+}
+.theme-switch {
+    margin-bottom: 30px;
 }

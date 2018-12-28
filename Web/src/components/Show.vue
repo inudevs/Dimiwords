@@ -6,7 +6,9 @@
       <span v-else>끝</span>
     </strong><br>
     <div id="progress">
-      <div id="bar"><span id="time">{{ Math.floor((progress.current/progress.all || 0)*100) + '%' }}</span></div>
+      <div id="bar" v-bind:style="getBarStyle()">
+        <span id="time">{{ Math.floor((progress.current/progress.all || 0)*100) + '%' }}</span>
+      </div>
     </div>
     <input id="guess" v-if="running" v-on:keyup.enter="key" autocomplete="off">
     <div v-if="!running">
@@ -151,7 +153,7 @@ export default {
             _input.value = this.current.en
             _input.disabled = true
             _input.style.borderStyle = 'solid'
-            _input.style.borderColor = '#EC008C'
+            _input.style.borderColor = this.color[0]
             setTimeout((src, item) => {
               _input.value = ''
               _input.disabled = false
@@ -170,9 +172,9 @@ export default {
           } else { // wrong
             var _info = document.getElementById('button-info')
             _info.innerHTML = '<strong style="font-size:40px;">틀렸습니다</strong>'
-            _input.style.color = '#EC008C'
+            _input.style.color = this.color[1]
             _input.style.borderStyle = 'solid'
-            _input.style.borderColor = '#EC008C'
+            _input.style.borderColor = this.color[1]
             setTimeout((src, item) => {
               _info.innerHTML = '주어진 뜻에 맞는 영단어를 입력해 주세요'
               _input.style.color = 'black'
@@ -189,6 +191,22 @@ export default {
       var _info = document.getElementById('button-info')
       _info.innerHTML = `${this.progress.all}개 중 <strong>${this.progress.current}개 단어</strong>를 맞췄어요`
       alert(`총 ${this.progress.current}점이 지급되었습니다.`)
+    },
+    getBarStyle: function () {
+      return {
+        'background-color': this.color[0],
+        'background': `linear-gradient(to left, ${this.color[0]}, ${this.color[1]})`
+      }
+    }
+  },
+  props: {
+    theme: {
+      type: String,
+      required: true
+    },
+    color: {
+      type: Array,
+      required: true
     }
   }
 }

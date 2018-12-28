@@ -9,6 +9,7 @@ import VueSession from 'vue-session'
 import { Navbar } from 'bootstrap-vue/es/components'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import ToggleButton from 'vue-js-toggle-button'
 
 Vue.prototype.$http = axios.create({
   baseURL: 'https://dimiwords.tk:5000/' // api server url
@@ -19,6 +20,7 @@ Vue.config.productionTip = false
 Vue.use(VModal, { dynamic: true })
 Vue.use(VueSession)
 Vue.use(Navbar)
+Vue.use(ToggleButton)
 
 /* eslint-disable no-new */
 new Vue({
