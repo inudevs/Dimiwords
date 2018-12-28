@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="body">
         <h1>회원가입</h1>
         <p>
             <router-link class="button" :to="{ name: 'login' }">로그인</router-link>

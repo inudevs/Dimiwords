@@ -1,5 +1,5 @@
 <template>
-  <div class="wordbooks">
+  <div class="body">
     <h1>단어장 목록</h1>
     <div v-for="wordbook in wordbooks" class="wordbook rounded-corners-gradient-borders">
       <router-link :to="{ name: 'show', params: { id: wordbook._id }}" class="link">

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="body">
         <h1>랭킹</h1>
         <p class="new-info">
             단어 하나를 맞출 때마다 <strong>1점</strong>, 새로운 단어를 등록하면 <strong>2점</strong>, 단어장을 등록하면 <strong>5점</strong>을 받아요
@@ -31,7 +31,7 @@
                 </tbody>
             </table>
         </div>
-        <div style="margin-bottom: 30px;">
+        <div style="margin: 30px;">
             <i class="fas fa-caret-left fa-3x" @click="pagePrev"
                 v-bind:style="{ 'color': (page > 1) ? 'black' : 'lightgray' }"></i>
             <span class="page">{{ page }}</span>

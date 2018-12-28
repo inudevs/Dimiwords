@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="body">
     <h1>단어 외우기</h1>
     <strong id="question">
       <span v-if="running">{{ current.ko }}</span>

@@ -46,7 +46,10 @@
         <input v-model.trim="name" placeholder="단어장 이름"><br>
         <input v-model.trim="intro" placeholder="단어장 한 줄 소개">
       </div>
-      <button class="new-wordbook" @click="addWordbook">단어장 추가하기</button>
+      <div v-if="!(!name || !intro)">
+        <button class="new-wordbook" @click="addWordbook">단어장 추가하기</button>
+      </div>
+      <div v-else style="margin-bottom: 40px;"></div>
     </div>
     <p v-else class="new-help">단어를 <strong>선택</strong>해 주세요</p>
   </div>

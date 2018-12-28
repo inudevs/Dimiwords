@@ -1,15 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Yeon+Sung');
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
 input:focus, textarea:focus, select:focus {
     outline: none;
-}
-#dimigo-logo {
-    width: 120px;
-    height: auto;
 }
 .link {
     text-decoration: none;
 }
-.wordbooks {
+.body {
     text-align: center;
 }
 .wordbook {
@@ -125,7 +122,7 @@ input:focus, textarea:focus, select:focus {
     width: 30%;
     color: black;
     margin-top: 25px;
-    margin-bottom: 25px;
+    margin-bottom: 40px;
     border: 3px rgb(37, 37, 37) solid;
     border-radius: 25px;
     font-size: 25px;
@@ -261,13 +258,13 @@ input[type=checkbox]{
     color: #EC008C;
     font-size: 20px;
 }
-.profile-preview .profile {
+/* .profile-preview .profile {
     display: inline-block;
     width: 100px;
     height: 100px;
     border-radius: 50%;
     object-fit: cover;
-}
+} */
 .profile-preview .name {
     font-size: 25px;
     font-weight: bold;
@@ -344,14 +341,6 @@ input[type=checkbox]{
 .join-form .hd::placeholder {
     color: #3A01DF;
 }
-/* app_default profile */
-.profile .name {
-    font-size: 25px;
-    font-weight: bold;
-}
-.profile .department {
-    font-weight: bold;
-}
 /* ranking */
 .ranking {
     width: 100%;
@@ -364,7 +353,7 @@ input[type=checkbox]{
     padding-top: 20px;
     padding-bottom: 20px;
     border-radius: 25px;
-    box-shadow: 0 0 10px 5px lightgray;
+    box-shadow: 0 0 12px 6px rgb(20, 20, 20, 0.1);
 }
 .ranking table tbody:before {
     content: "-";
@@ -405,22 +394,6 @@ input[type=checkbox]{
     margin-left: 15px;
     margin-right: 15px;
 }
-/* app.vue profile buttons */
-.profile button {
-    color: #EC008C;
-    border: 3px solid #EC008C;
-    border-radius: 5px;
-    font-size: 20px;
-}
-.profile button:focus { 
-    outline: 0 !important; 
-    color: #FC6767;
-    border-color: #FC6767;
-}
-.profile button:hover {
-    color: #FC6767;
-    border-color: #FC6767;
-}
 /* login/join buttons */
 a.button {
     color: #EC008C;
@@ -440,7 +413,7 @@ a.button:hover {
     width: 30%;
     color: black;
     margin-top: 25px;
-    margin-bottom: 25px;
+    margin-bottom: 40px;
     border: 3px rgb(37, 37, 37) solid;
     border-radius: 25px;
     font-size: 25px;
@@ -449,4 +422,50 @@ a.button:hover {
 .login-user:hover {
     color: white;
     background: black;
+}
+/* nav */
+#dimigo-logo {
+    width: 50px;
+    height: auto;
+    margin-left: 40px;
+}
+span.dimiwords {
+    color: white;
+    margin-left: 10px;
+    font-size: 20px;
+    font-family: 'Press Start 2P', cursive;
+}
+.body {
+    margin-top: 20px;
+}
+/* app_default profile */
+.profile { 
+    background: white;
+    border-radius: 15px;
+    padding: 10px;
+    margin-left: 30px;
+    box-shadow: 0 0 8px 4px rgb(20, 20, 20, 0.1);
+}
+.profile .name {
+    color: black;
+    /* font-size: 25px; */
+    /* font-weight: bold; */
+}
+.profile .department {
+    font-weight: bold;
+}
+/* app.vue profile buttons */
+.profile button {
+    color: #EC008C;
+    border: 3px solid #EC008C;
+    border-radius: 5px;
+    font-size: 15px;
+}
+.bg-primary {
+    /* background-color: #007bff !important; */
+    background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+}
+.navbar-brand {
+    display: flex !important;
+    align-items: center;
 }
