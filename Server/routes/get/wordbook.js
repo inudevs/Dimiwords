@@ -5,7 +5,13 @@ var Wordbook = require('../../models/wordbooks.js')
 router.get('/:id', function (req, res, next) { // wordbook infomation
   var id = req.params.id
   Wordbook.findById(id, function (error, wordbook) {
-    if (error) { console.error(error) }
+    if (error) {
+      console.error(error)
+      res.send({
+        success: false,
+        message: 'Error'
+      })
+    }
     res.send({ wordbook })
   })
 })
