@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '@/components/Index'
+import Words from '@/components/Words'
+import Wordbooks from '@/components/Books'
 import Show from '@/components/Show'
 import New from '@/components/New'
 import Login from '@/components/Login'
@@ -18,7 +20,17 @@ export default new Router({
       component: Index
     },
     {
-      path: '/:id',
+      path: '/view/words',
+      name: 'words',
+      component: Words
+    },
+    {
+      path: '/view/wordbooks',
+      name: 'wordbooks',
+      component: Wordbooks
+    },
+    {
+      path: '/test/:id',
       name: 'show',
       component: Show
     },
