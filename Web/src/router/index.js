@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-import Index from '@/components/Index'
+import VueRouter from 'vue-router'
+import Index from '../components/Index'
 import Show from '@/components/Show'
 import New from '@/components/New'
 import Login from '@/components/Login'
@@ -8,9 +8,9 @@ import Join from '@/components/Join'
 import Rank from '@/components/Rank'
 import '../assets/css/style.css'
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
-export default new Router({
+export default new VueRouter({
   routes: [
     {
       path: '/',

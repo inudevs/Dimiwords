@@ -33,6 +33,7 @@ export default {
         email: this.email,
         password: this.password
       }).then((response) => {
+        // eslint-disable-next-line
         console.log(response)
         if (response.status === 200 && response.data.success) {
           this.$session.start()
@@ -45,6 +46,7 @@ export default {
           alert('로그인에 실패했습니다.')
         }
       }, function (err) {
+        // eslint-disable-next-line
         console.log('err', err)
         alert('로그인 도중 에러가 발생했습니다.')
       })

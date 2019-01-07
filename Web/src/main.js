@@ -1,8 +1,5 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import App from './App'
-import router from './router'
+import App from './App.vue'
 import axios from 'axios'
 import VModal from 'vue-js-modal'
 import VueSession from 'vue-session'
@@ -10,6 +7,7 @@ import { Navbar } from 'bootstrap-vue/es/components'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import ToggleButton from 'vue-js-toggle-button'
+import routes from './router'
 
 Vue.prototype.$http = axios.create({
   baseURL: 'https://dimiwords.tk:5000/' // api server url
@@ -22,10 +20,8 @@ Vue.use(VueSession)
 Vue.use(Navbar)
 Vue.use(ToggleButton)
 
-/* eslint-disable no-new */
 new Vue({
   el: '#app',
-  router,
-  components: { App },
-  template: '<App/>'
-})
+  router: routes,
+  render: h => h(App),
+}).$mount('#app')

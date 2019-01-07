@@ -5,12 +5,13 @@
     <toggle-button class="theme-switch" v-if="this.$session.exists()"
       :value="(theme === 'magenta')" @change="changeTheme()"
       :color="{checked: '#EC008C', unchecked: '#552FC9'}" :sync="true"
-      width="100" height="40" />
+      :width="100" :height="40" />
   </div>
 </template>
 
 <script>
 import Navigation from './components/Nav'
+
 export default {
   name: 'App',
   components: {

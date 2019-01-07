@@ -1,12 +1,29 @@
-# Dimiwords-Web
-Dimiwords Web App with Vue.js
+# web2
 
-## Setup API server URL
-
-Change following code in `Web/src/main.js` to your running API server URL
-
-```js
-Vue.prototype.$http = axios.create({
-  baseURL: "http://localhost:3000/" // api server url
-});
+## Project setup
 ```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Run your tests
+```
+npm run test
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
