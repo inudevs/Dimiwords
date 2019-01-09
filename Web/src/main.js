@@ -23,5 +23,5 @@ Vue.use(ToggleButton)
 new Vue({
   el: '#app',
   router: routes,
-  render: h => h(App),
+  render: h => h(App)
 }).$mount('#app')
