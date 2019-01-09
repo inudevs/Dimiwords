@@ -1,6 +1,7 @@
 <template>
   <div class="body">
-    <h1>단어 외우기</h1>
+    <h1>TEST</h1>
+    <h2 id="word-index">{{ `${progress.index} / ${progress.all}` }}</h2>
     <strong id="question">
       <span v-if="running">{{ current.ko }}</span>
       <span v-else>끝</span>
@@ -45,7 +46,8 @@ export default {
         this.wordbook = response.data.wordbook
         this.words = this.wordbook.words
         this.progress.all = this.words.length
-        this.progress.current = 0
+        this.progress.current = 0 // current num of correct
+        this.progress.index = 0 // index of current word
         this.current = this.next()
         this.current.ko = this.current.ko.join(', ')
         this.running = true
@@ -74,6 +76,7 @@ export default {
     },
     next: function () {
       this.shuffle(this.words)
+      this.progress.index++;
       return this.words.pop()
     },
     move: function (bar) {
