@@ -90,6 +90,14 @@ h1 {
     margin: 0;
     margin-left: 5px;
 }
+.word.gradient.blue {
+    color: white;
+    background: rgb(85, 47, 201);
+    background: -webkit-linear-gradient(to right, rgb(85, 47, 201), #4296db);
+    background: linear-gradient(to right, rgb(85, 47, 201), #4296db);
+    margin: 0;
+    margin-left: 5px;
+}
 .fa-ellipsis-h {
     color: rgb(223, 223, 223);
 }
@@ -166,9 +174,6 @@ h1 {
 table.word-table td {
     padding: 10px;
 }
-table.word-table tr td:last-child {
-    border-left: 2px solid #EC008C;
-}
 input[type=checkbox]{
     transform: scale(1.5);
     -ms-transform: scale(1.5);
@@ -214,6 +219,19 @@ input[type=checkbox]{
     color: white;
     background: #EC008C;
 }
+.no-words.blue {
+    display: inline-block;
+    font-size: 20px;
+    font-family: 'Yeon Sung', cursive;
+    color: #552FC9;
+    border: 2px #552FC9 solid;
+    background: white;
+    border-radius: 25px;
+}
+.no-words.blue:hover {
+    color: white;
+    background: #552FC9;
+}
 .add-words-box {
     text-align: center;
 }
@@ -257,9 +275,15 @@ input[type=checkbox]{
     border: 3px #EC008C solid;
     border-radius: 10px;
 }
+.wordbook-info.blue input {
+    border-color: rgb(85, 47, 201);
+}
 .wordbook-info input::placeholder {
     color: #EC008C;
     font-size: 20px;
+}
+.wordbook-info.blue input::placeholder {
+    color: rgb(85, 47, 201);
 }
 .fa-question-circle {
     width: 50px;
@@ -503,4 +527,52 @@ span.dimiwords {
 }
 .theme-switch {
     margin-bottom: 30px;
+}
+/* search */
+div#search {
+    margin-bottom: 20px;
+}
+div#search input {
+    margin: none;
+    padding: 15px;
+    background: #A770EF;
+    background: -webkit-linear-gradient(to right, #A770EF, #CF8BF3, #FDB99B);
+    background: linear-gradient(to right, #A770EF, #CF8BF3, #FDB99B);
+    border-radius: 25px;
+    box-shadow: 0 0 4px 2px rgb(20, 20, 20, 0.1);
+    width: 400px;
+    height: 40px;
+    color: black;
+    background: none;
+    border: none;
+}
+@media (max-width: 500px) {
+    div#search input {
+        width: 75%;
+    }
+}
+div#search button {
+    height: 40px;
+    width: 40px;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0 0 4px 2px rgb(20, 20, 20, 0.1);
+    /* position: absolute;   */
+}
+div#search button.trash {
+    color: white;
+    background: #cb2d3e;
+    background: -webkit-linear-gradient(to right, #ef473a, #cb2d3e);
+    background: linear-gradient(to right, #ef473a, #cb2d3e);
+}
+div#search button.search {
+    color: black;
+    background: #DDD;
+}
+div#search button.search:hover {
+    color: black;
+    background: #CCC;
+}
+button:focus {
+    outline: 0;
 }

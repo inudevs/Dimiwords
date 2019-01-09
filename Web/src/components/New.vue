@@ -2,8 +2,17 @@
   <div class="body">
     <h1>CREATE</h1>
     <p class="new-help">단어장에 추가할 단어를 <b>선택</b>하세요</p>
+    <div id="search">
+      <button class="trash" v-if="search" v-on:click="updateWords">
+        <i class="far fa-trash-alt"></i>
+      </button>
+      <input v-model.trim="query" v-on:keyup.enter="searchWords" 
+        placeholder="영문으로 단어를 검색해 보세요." autocomplete="off"/>
+      <button class="search" v-on:click="searchWords">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
     <table class="word-table">
-      <input v-model.trim="query" v-on:keyup.enter="searchWords" autocomplete="off"/>
       <tr v-for="word in all_words">
         <td>
           <input type="checkbox" v-model="words" :value="word">
@@ -11,19 +20,23 @@
         <td>
           <strong>{{ word.en }}</strong>
         </td>
-        <td>
+        <td :style="{ borderLeft: '2px solid ' + color[0] }">
           <strong>뜻: </strong>{{ word.ko.join(', ') }}
         </td>
       </tr>
+      <p v-if="all_words.length === 0">검색 결과가 없습니다.</p>
     </table><br>
-    <div style="margin-bottom: 10px;">
+    <div style="margin-bottom: 10px;" v-if="!search">
         <i class="fas fa-caret-left fa-3x" @click="pagePrev"
             v-bind:style="{ 'color': (page > 1) ? 'black' : 'lightgray' }"></i>
         <span class="page">{{ page }}</span>
         <i class="fas fa-caret-right fa-3x" @click="pageNext"
             v-bind:style="{ 'color': (page < this.page_max) ? 'black' : 'lightgray' }"></i>
     </div>
-    <button class="no-words" @click="show">찾는 단어가 없나요?</button>
+
+    <button class="no-words" @click="show" v-bind:class="{ 'blue': (theme === 'skyblue') }">
+      찾는 단어가 없나요?
+    </button>
     <modal name="add-words" height="auto" :scrollable="true">
       <div class="add-words-box">
         <p class="new-help">이미 등록된 단어가 없나요? 새로운 단어를 <strong>추가</strong>하세요</p>
@@ -39,10 +52,13 @@
         <button class="new-word" @click="addWord">단어 추가하기</button>
       </div>
     </modal>
+
     <div v-if="words.length > 0" class="new-wordbook-box">
       <p class="new-help">이 단어들로 새로운 <strong>단어장</strong>을 만들 거예요</p>
-      <span class="word gradient" v-for="word in words">{{ word.en }}</span><br>
-      <div class="wordbook-info">
+      <span class="word gradient" v-for="word in words" v-bind:class="{ 'blue': (theme === 'skyblue') }">
+        {{ word.en }}
+      </span><br>
+      <div class="wordbook-info" v-bind:class="{ 'blue': (theme === 'skyblue') }">
         <p class="new-help">단어장 <strong>이름</strong>과 <strong>한 줄 소개</strong>를 입력해주세요</p>
         <input v-model.trim="name" placeholder="단어장 이름"><br>
         <input v-model.trim="intro" placeholder="단어장 한 줄 소개">
@@ -77,11 +93,14 @@ export default {
       name: '',
       intro: '',
       token: this.$session.get('jwt'),
-      query: ''
+      query: '',
+      search: false
     }
   },
   methods: {
     updateWords: function () {
+      this.search = false
+      this.query = ''
       this.$http.get('/api/list/words', {
         params: { page: this.page }
       })
@@ -191,7 +210,11 @@ export default {
       }
     },
     searchWords: function (event) {
-      console.log(this.query)
+      if (!this.query) {
+        this.updateWords();
+        return;
+      }
+      this.search = true;
       this.$http.post('/api/search/words', {
         token: this.token,
         query: this.query
@@ -199,9 +222,18 @@ export default {
         headers: { 'Content-type': 'application/json' }
       })
         .then((response) => {
-          console.log(response)
           this.all_words = response.data.result.docs
         })
+    }
+  },
+  props: {
+    theme: {
+      type: String,
+      required: true
+    },
+    color: {
+      type: Array,
+      required: true
     }
   }
 }
