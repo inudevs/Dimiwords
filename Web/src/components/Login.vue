@@ -1,6 +1,6 @@
 <template>
     <div class="body">
-        <h1>로그인</h1>
+        <h1>LOGIN</h1>
         <p>
             <router-link class="button" :to="{ name: 'join' }">가입하기</router-link>
         </p>
