@@ -9,6 +9,9 @@ input:focus, textarea:focus, select:focus {
 .body {
     text-align: center;
 }
+h1 {
+    font-family: 'Press Start 2P', cursive !important;
+}
 .wordbook {
     display: inline-block;
     width: 75%;
@@ -89,6 +92,11 @@ input:focus, textarea:focus, select:focus {
 }
 .fa-ellipsis-h {
     color: rgb(223, 223, 223);
+}
+#word-index {
+    margin-top: 0.5em;
+    font-size: 3.5em;
+    font-family: 'Press Start 2P', cursive;
 }
 #guess {
     width: 50%;
