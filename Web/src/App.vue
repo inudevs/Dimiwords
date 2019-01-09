@@ -11,11 +11,16 @@
 
 <script>
 import Navigation from './components/Nav'
-
 export default {
   name: 'App',
   components: {
     'Navigation': Navigation
+  },
+  created: function () {
+    if (this.$session.has('theme')){
+      this.theme = 'skyblue'
+      this.color = ['#552FC9', '#4296DB']
+    }
   },
   data () {
     return {
@@ -27,9 +32,11 @@ export default {
     changeTheme: function () {
       if (this.theme === 'magenta') {
         this.theme = 'skyblue'
+        this.$session.set('theme', 'skyblue')
         this.color = ['#552FC9', '#4296DB']
       } else {
         this.theme = 'magenta'
+        this.$session.remove('theme')
         this.color = ['#EC008C', '#FC6767']
       }
     },
@@ -38,9 +45,6 @@ export default {
         'background-image': `linear-gradient(to right, ${theme[0]}, ${theme[1]})`,
         'border-color': theme[0]
       }
-    },
-    applyTheme: function (theme) {
-      this.color = theme
     }
   }
 }

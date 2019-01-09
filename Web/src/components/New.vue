@@ -1,8 +1,9 @@
 <template>
-  <div class="new">
-    <h1>단어장 만들기</h1>
+  <div class="body">
+    <h1>CREATE</h1>
     <p class="new-help">단어장에 추가할 단어를 <b>선택</b>하세요</p>
     <table class="word-table">
+      <input v-model.trim="query" v-on:keyup.enter="searchWords" autocomplete="off"/>
       <tr v-for="word in all_words">
         <td>
           <input type="checkbox" v-model="words" :value="word">
@@ -75,7 +76,8 @@ export default {
       ko: [''],
       name: '',
       intro: '',
-      token: this.$session.get('jwt')
+      token: this.$session.get('jwt'),
+      query: ''
     }
   },
   methods: {
@@ -107,7 +109,7 @@ export default {
       if (!this.checkWord()) { // check if input is valid
         alert('단어를 입력해 주세요!')
         return false
-      };
+      }
       if (this.en.match(/[^a-zA-Z]/) != null) { // check if english input is only english chars
         alert('영단어 란에는 영문자만 입력해 주세요!')
         return false
@@ -187,6 +189,19 @@ export default {
         this.page++
         this.updateWords()
       }
+    },
+    searchWords: function (event) {
+      console.log(this.query)
+      this.$http.post('/api/search/words', {
+        token: this.token,
+        query: this.query
+      }, {
+        headers: { 'Content-type': 'application/json' }
+      })
+        .then((response) => {
+          console.log(response)
+          this.all_words = response.data.result.docs
+        })
     }
   }
 }
