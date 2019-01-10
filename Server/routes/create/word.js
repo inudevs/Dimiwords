@@ -25,7 +25,7 @@ router.post('/', (req, res) => { // add new word
     })
     return
   }
-  console.log(req.body)
+  // console.log(req.body)
   Word.find({ en: english, ko: korean }, function (err, docs) {
     if (err) {
       console.log(err)

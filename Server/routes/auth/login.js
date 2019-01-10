@@ -15,9 +15,9 @@ router.post('/', (req, res) => {
     } else if (!user) {
       res.send({ success: false, error: 'No User' })
     } else {
-      console.log(user)
+      // console.log(user)
       const token = auth.sign(user.id)
-      console.log(token)
+      // console.log(token)
       const id = auth.verify(token).id
       User.findById(id, function (error, user) {
         if (error) { console.error(error) }

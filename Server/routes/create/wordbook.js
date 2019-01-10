@@ -25,7 +25,7 @@ router.post('/', (req, res) => { // add new wordbook
     })
     return
   }
-  console.log(true)
+  // console.log(true)
   User.findById(userId, function (error, user) {
     if (error || !user) {
       console.error(error)
@@ -35,7 +35,7 @@ router.post('/', (req, res) => { // add new wordbook
       })
       return
     }
-    console.log(user)
+    // console.log(user)
     var newWordbook = new Wordbook({
       name: name,
       intro: intro,
