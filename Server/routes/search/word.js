@@ -26,7 +26,7 @@ router.post('/', function (req, res, next) { // list of all words
     return
   }
   if (!page || page < 1) page = 1
-  Word.paginate({ 
+  Word.paginate({
     'en': { '$regex': query, '$options': 'i' }
   }, { page: page, limit: 10, sort: { _id: -1 } }, function (error, pageCount, paginatedResults) {
     if (error) {
