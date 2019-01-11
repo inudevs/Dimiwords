@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 import Index from '@/components/Index'
 import Words from '@/components/Words'
 import Wordbooks from '@/components/Books'
-import Show from '@/components/Show'
+import TestEnglish from '@/components/TestEn'
 import New from '@/components/New'
 import Login from '@/components/Login'
 import Join from '@/components/Join'
@@ -33,8 +33,8 @@ export default new VueRouter({
     },
     {
       path: '/test/:id',
-      name: 'show',
-      component: Show
+      name: 'test_en',
+      component: TestEnglish
     },
     {
       path: '/new/wordbook',

@@ -5,7 +5,7 @@ var Wordbook = require('../../models/wordbooks.js')
 router.get('/', function (req, res, next) { // list of wordbooks
   var page = req.query.page
   if (!page || page < 1) page = 1
-  Wordbook.paginate({}, { page: page, lean: true, limit: 5, sort: { _id: -1 } }, function (error, pageCount, paginatedResults) {
+  Wordbook.paginate({}, { page: page, lean: true, limit: 9, sort: { _id: -1 } }, function (error, pageCount, paginatedResults) {
     if (error) {
       res.send({ success: false, error: 'error' })
     } else {

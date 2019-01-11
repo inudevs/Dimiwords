@@ -12,42 +12,6 @@ input:focus, textarea:focus, select:focus {
 h1 {
     font-family: 'Press Start 2P', cursive !important;
 }
-.wordbook {
-    display: inline-block;
-    width: 75%;
-    padding: 3px;
-    margin-bottom: 10px;
-    background: none;
-    border: 7px solid transparent;
-    /* border-image: linear-gradient(to left, #EC008C, #FC6767); */
-    border-image-slice: 1;
-}
-.wordbook .header {
-    margin-top: 5px;
-}
-.wordbook .title {
-    font-size: 32px;
-    text-decoration: none;
-    margin-top: 5px;
-    background: -webkit-linear-gradient(135deg, #EC008C, #FC6767);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-.wordbook .title.blue {
-    background: -webkit-linear-gradient(135deg, #552FC9, #4296DB);
-    background-clip: text;
-    -webkit-background-clip: text;
-}
-.wordbook .author {
-    color: black;
-    font-size: 15px;
-}
-.wordbook .intro {
-    color: black;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
 .words {
     margin-bottom: 5px;
 }
