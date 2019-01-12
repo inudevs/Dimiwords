@@ -5,6 +5,8 @@ import Index from '@/components/Index'
 import Words from '@/components/Words'
 import Wordbooks from '@/components/Books'
 import TestEnglish from '@/components/TestEn'
+import TestKorean from '@/components/TestKo'
+import Learn from '@/components/Learn'
 import New from '@/components/New'
 import Login from '@/components/Login'
 import Join from '@/components/Join'
@@ -32,9 +34,19 @@ export default new VueRouter({
       component: Wordbooks
     },
     {
-      path: '/test/:id',
+      path: '/test/english/:id',
       name: 'test_en',
       component: TestEnglish
+    },
+    {
+      path: '/test/korean/:id',
+      name: 'test_ko',
+      component: TestKorean
+    },
+    {
+      path: '/learn/:id',
+      name: 'learn',
+      component: Learn
     },
     {
       path: '/new/wordbook',
