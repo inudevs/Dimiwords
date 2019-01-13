@@ -1,0 +1,328 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>로그인 및 계정 인증 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Dimiwords
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.2.1" data-path="auth.html">
+            
+                <a href="auth.html">
+            
+                    
+                    로그인 및 계정 인증
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >로그인 및 계정 인증</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#xB85C;&#xADF8;&#xC778;-&#xBC0F;-&#xACC4;&#xC815;-&#xC778;&#xC99D;">&#xB85C;&#xADF8;&#xC778; &#xBC0F; &#xACC4;&#xC815; &#xC778;&#xC99D;</h1>
+<h2 id="login">Login</h2>
+<p><a href="https://github.com/CIVAR-DIMIGO/Dimiwords" target="_blank">&#xB514;&#xBBF8;&#xC6CC;&#xB4DC;(Dimiwords)</a>&#xB294; JWT(JSON Web Token) &#xAE30;&#xBC18; &#xC778;&#xC99D;&#xC744; &#xC0AC;&#xC6A9;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="request">Request</h3>
+<p><a href="https://dimiwords.tk:5000/api/auth/login" target="_blank">https://dimiwords.tk:5000/api/auth/login</a></p>
+<p>&#xC704; URL&#xB85C; &#xC11C;&#xBC84;&#xC5D0; POST &#xC694;&#xCCAD;&#xC744; &#xBCF4;&#xB0C5;&#xB2C8;&#xB2E4;. POST &#xC694;&#xCCAD;&#xC740; &#xC544;&#xB798;&#xC640; &#xAC19;&#xC740; &#xD615;&#xC2DD;&#xC758; JSON &#xB370;&#xC774;&#xD130;&#xB97C; &#xC804;&#xC1A1;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;email&quot;</span>: <span class="hljs-string">&quot;email@example.com&quot;</span>,
+    <span class="hljs-string">&quot;password&quot;</span>: <span class="hljs-string">&quot;password&quot;</span>
+}
+</code></pre>
+<h3 id="response">Response</h3>
+<h4 id="success">Success</h4>
+<p>&#xC694;&#xCCAD;&#xC774; &#xC815;&#xC0C1;&#xC801;&#xC73C;&#xB85C; &#xCC98;&#xB9AC;&#xB418;&#xC5C8;&#xB2E4;&#xBA74;, &#xC544;&#xB798;&#xC640; &#xAC19;&#xC740; &#xB370;&#xC774;&#xD130;&#xAC00; &#xBC18;&#xD658;&#xB429;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;success&quot;</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">&quot;token&quot;</span>: <span class="hljs-string">&quot;6815ZX0jKOj5X63aFFDDkHiO&quot;</span>,
+    <span class="hljs-string">&quot;user&quot;</span>: {
+        <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;Civar&quot;</span>,
+        <span class="hljs-string">&quot;intro&quot;</span>: <span class="hljs-string">&quot;Lorem Ipsum&quot;</span>,
+        <span class="hljs-string">&quot;email&quot;</span>: <span class="hljs-string">&quot;email@example.com&quot;</span>,
+        <span class="hljs-string">&quot;department&quot;</span>: <span class="hljs-number">3</span>,
+        <span class="hljs-string">&quot;points&quot;</span>: <span class="hljs-number">20</span>,
+        <span class="hljs-string">&quot;submit&quot;</span>: <span class="hljs-number">100</span>,
+        <span class="hljs-string">&quot;accept&quot;</span>: <span class="hljs-number">20</span>
+    }
+}
+</code></pre>
+<ul>
+<li><code>success</code>: &#xC131;&#xACF5; &#xC5EC;&#xBD80;</li>
+<li><code>token</code>: &#xB85C;&#xADF8;&#xC778;&#xD55C; &#xC0AC;&#xC6A9;&#xC790;&#xC5D0; &#xB300;&#xD55C; &#xD1A0;&#xD070;</li>
+<li><code>user</code>: &#xB85C;&#xADF8;&#xC778;&#xD55C; &#xC2DC;&#xC810;&#xC758; &#xC0AC;&#xC6A9;&#xC790; &#xC815;&#xBCF4;<ul>
+<li><code>name</code>: &#xC0AC;&#xC6A9;&#xC790; &#xC774;&#xB984;</li>
+<li><code>intro</code>: &#xC0AC;&#xC6A9;&#xC790; &#xC18C;&#xAC1C;</li>
+<li><code>email</code>: &#xC0AC;&#xC6A9;&#xC790; &#xC774;&#xBA54;&#xC77C;(&#xB85C;&#xADF8;&#xC778; &#xC2DC; &#xC544;&#xC774;&#xB514;&#xB85C; &#xC0AC;&#xC6A9;&#xB428;)</li>
+<li><code>department</code>: &#xC0AC;&#xC6A9;&#xC790; &#xD559;&#xACFC;<pre><code class="lang-json">  { <span class="hljs-string">&quot;eb&quot;</span>: <span class="hljs-number">0</span>, <span class="hljs-string">&quot;dc&quot;</span>: <span class="hljs-number">1</span>, <span class="hljs-string">&quot;wp&quot;</span>: <span class="hljs-number">2</span>, <span class="hljs-string">&quot;hd&quot;</span>: <span class="hljs-number">3</span> }
+</code></pre>
+  &#xC22B;&#xC790;&#xB294; &#xAC01;&#xAC01; <code>&#xC774;&#xBE44;&#xC988;&#xB2C8;&#xC2A4;&#xACFC;</code>, <code>&#xB514;&#xC9C0;&#xD138;&#xCEE8;&#xD150;&#xCE20;&#xACFC;</code>, <code>&#xC6F9;&#xD504;&#xB85C;&#xADF8;&#xB798;&#xBC0D;&#xACFC;</code>, <code>&#xD574;&#xD0B9;&#xBC29;&#xC5B4;&#xACFC;</code>&#xC758; 4&#xAC1C; &#xD559;&#xACFC;&#xC5D0; &#xB300;&#xD55C; &#xC778;&#xB371;&#xC2A4;&#xB97C; &#xC758;&#xBBF8;&#xD569;&#xB2C8;&#xB2E4;.</li>
+<li><code>points</code>: &#xC0AC;&#xC6A9;&#xC790; &#xD3EC;&#xC778;&#xD2B8;</li>
+<li><code>submit</code>: &#xB2E8;&#xC5B4; &#xC81C;&#xCD9C; &#xC218;</li>
+<li><code>accept</code>: &#xB2E8;&#xC5B4; &#xC81C;&#xCD9C; &#xC911; &#xC815;&#xB2F5; &#xC218; </li>
+</ul>
+</li>
+</ul>
+<h5 id="&#xC8FC;&#xC758;-&#xBC0F;-&#xCC38;&#xACE0;-&#xC0AC;&#xD56D;">&#xC8FC;&#xC758; &#xBC0F; &#xCC38;&#xACE0; &#xC0AC;&#xD56D;</h5>
+<ul>
+<li>&#xB85C;&#xADF8;&#xC778; &#xC2DC; &#xBC18;&#xD658;&#xB418;&#xB294; &#xC0AC;&#xC6A9;&#xC790; &#xC815;&#xBCF4;&#xB294; &#xB85C;&#xADF8;&#xC778; &#xC2DC;&#xC810;&#xC758; &#xB370;&#xC774;&#xD130;&#xC774;&#xBBC0;&#xB85C;, &#xC774;&#xD6C4; &#xC5C5;&#xB370;&#xC774;&#xD2B8;&#xD558;&#xC9C0; &#xC54A;&#xACE0; &#xC810;&#xC218;&#xB098; &#xC815;&#xB2F5;&#xB960; &#xB4F1;&#xC758; &#xB370;&#xC774;&#xD130;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xACBD;&#xC6B0; &#xBB38;&#xC81C;&#xAC00; &#xBC1C;&#xC0DD;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</li>
+</ul>
+<h4 id="error">Error</h4>
+<h5 id="&#xB85C;&#xADF8;&#xC778;-&#xC815;&#xBCF4;&#xC640;-&#xAC19;&#xC740;-&#xC0AC;&#xC6A9;&#xC790;&#xAC00;-&#xC874;&#xC7AC;&#xD558;&#xC9C0;-&#xC54A;&#xC74C;">&#xB85C;&#xADF8;&#xC778; &#xC815;&#xBCF4;&#xC640; &#xAC19;&#xC740; &#xC0AC;&#xC6A9;&#xC790;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xC74C;</h5>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;success&quot;</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-string">&quot;error&quot;</span>: <span class="hljs-string">&quot;No User&quot;</span>
+}
+</code></pre>
+<ul>
+<li><code>success</code>: &#xC131;&#xACF5; &#xC5EC;&#xBD80;</li>
+<li><code>error</code>: &#xC5D0;&#xB7EC; &#xBA54;&#xC138;&#xC9C0;</li>
+</ul>
+<h5 id="&#xB85C;&#xADF8;&#xC778;-&#xCC98;&#xB9AC;-&#xC911;-&#xC11C;&#xBC84;-&#xC5D0;&#xB7EC;&#xAC00;-&#xBC1C;&#xC0DD;&#xD568;">&#xB85C;&#xADF8;&#xC778; &#xCC98;&#xB9AC; &#xC911; &#xC11C;&#xBC84; &#xC5D0;&#xB7EC;&#xAC00; &#xBC1C;&#xC0DD;&#xD568;</h5>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;success&quot;</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-string">&quot;error&quot;</span>: <span class="hljs-string">&quot;Error&quot;</span>
+}
+</code></pre>
+<ul>
+<li><code>success</code>: &#xC131;&#xACF5; &#xC5EC;&#xBD80;</li>
+<li><code>error</code>: &#xC5D0;&#xB7EC; &#xBA54;&#xC138;&#xC9C0;</li>
+</ul>
+<h2 id="logout">Logout</h2>
+<p>&#xD604;&#xC7AC;&#xB294; &#xB85C;&#xADF8;&#xC544;&#xC6C3; &#xC2DC; &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xC5D0;&#xC11C; &#xBC1C;&#xAE09;&#xBC1B;&#xC740; &#xD1A0;&#xD070;&#xC744; &#xD30C;&#xAE30;&#xD558;&#xB294; &#xBC29;&#xBC95;&#xC73C;&#xB85C; &#xC784;&#xC2DC;&#xB85C; &#xAD6C;&#xD604;&#xB418;&#xC5B4; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. </p>
+<p>&#xCD94;&#xD6C4; &#xB85C;&#xADF8;&#xC544;&#xC6C3; &#xC2DC; &#xC0AC;&#xC6A9;&#xC790; &#xD1A0;&#xD070;&#xC744; &#xC11C;&#xBC84;&#xB85C; &#xBCF4;&#xB0B4;&#xBA74; &#xC774;&#xB97C; &#xBE14;&#xB799;&#xB9AC;&#xC2A4;&#xD2B8;&#xC5D0; &#xB4F1;&#xB85D;&#xD558;&#xB294;(&#xB610;&#xB294; &#xD1A0;&#xD070; &#xD654;&#xC774;&#xD2B8;&#xB9AC;&#xC2A4;&#xD2B8; &#xC2DC;&#xC2A4;&#xD15C;&#xC744; &#xC801;&#xC6A9;) &#xC778;&#xD130;&#xD398;&#xC774;&#xC2A4;&#xB97C; &#xCD94;&#xAC00;&#xD560; &#xC608;&#xC815;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<p>&#xD604;&#xC7AC; &#xC2DC;&#xC810;&#xC758; &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8; &#xAC1C;&#xBC1C;&#xC790; &#xC5ED;&#xC2DC; &#xB85C;&#xADF8;&#xC544;&#xC6C3; &#xC2DC; &#xD1A0;&#xD070;&#xC744; &#xD30C;&#xAE30;&#xD558;&#xB294; &#xBC29;&#xBC95;&#xC744; &#xC774;&#xC6A9;&#xD574; &#xC784;&#xC2DC;&#xB85C; &#xB85C;&#xADF8;&#xC544;&#xC6C3; &#xCC98;&#xB9AC;&#xB97C; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev navigation-unique" aria-label="Previous page: API">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"로그인 및 계정 인증","level":"1.2.1","depth":2,"previous":{"title":"API","level":"1.2","depth":1,"path":"api/README.md","ref":"api/README.md","articles":[{"title":"로그인 및 계정 인증","level":"1.2.1","depth":2,"path":"api/auth.md","ref":"api/auth.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"api/auth.md","mtime":"2019-01-13T17:43:53.640Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-13T17:45:40.141Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
