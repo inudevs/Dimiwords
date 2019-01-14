@@ -19,15 +19,17 @@
             <i class="fas fa-ellipsis-h"></i>
           </div>
           <span><i class="fas fa-user"></i> {{wordbook.user}}</span><br>
-          <router-link :to="{ name: 'test_en', params: { id: wordbook._id }}" tag="button">
-            <i class="fas fa-play"></i> 영단어 맞추기
-          </router-link>
-          <router-link :to="{ name: 'test_ko', params: { id: wordbook._id }}" tag="button">          
-            <i class="fas fa-check-square"></i> 한글 뜻 맞추기
-          </router-link>
-          <router-link :to="{ name: 'learn', params: { id: wordbook._id }}" tag="button">   
-            <i class="fas fa-book"></i> 플래시 카드
-          </router-link>
+          <div class="study">
+            <router-link :to="{ name: 'test_en', params: { id: wordbook._id }}" tag="button">
+              <i class="fas fa-play"></i> 영단어 맞추기
+            </router-link>
+            <router-link :to="{ name: 'test_ko', params: { id: wordbook._id }}" tag="button">          
+              <i class="fas fa-check-square"></i> 한글 뜻 맞추기
+            </router-link>
+            <router-link :to="{ name: 'learn', params: { id: wordbook._id }}" tag="button">   
+              <i class="fas fa-book"></i> 플래시 카드
+            </router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -103,6 +105,16 @@ h4 {
   color: white;
   border-radius: 5px;
   padding: 5px;
+}
+.study button {
+  color: white;
+  border-radius: 8px;
+  padding: 3px;
+  background-color: rgb(66, 66, 66);
+  margin: 2px;
+}
+.study button:hover {
+  background-color: black;
 }
 </style>
 

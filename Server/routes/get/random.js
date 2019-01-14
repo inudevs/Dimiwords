@@ -2,7 +2,7 @@ var express = require('express')
 var router = express.Router()
 var Word = require('../../models/words.js')
 
-router.get('/:size', function (req, res, next) { 
+router.get('/:size', function (req, res, next) {
   const size = Number(req.params.size)
   Word.aggregate([{ $sample: { size: size } }], function (error, result) {
     if (error) {
