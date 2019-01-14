@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>랭킹 · GitBook</title>
+        <title>사용자 계정 생성 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,6 +57,8 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    
+    <link rel="prev" href="auth.html" />
     
 
     </head>
@@ -126,9 +128,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1.1" data-path="../account/auth.html">
+        <li class="chapter " data-level="1.2.1.1" data-path="auth.html">
             
-                <a href="../account/auth.html">
+                <a href="auth.html">
             
                     
                     사용자 계정 인증
@@ -140,9 +142,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1.1.1" data-path="../account/auth.html">
+        <li class="chapter " data-level="1.2.1.1.1" data-path="auth.html">
             
-                <a href="../account/auth.html#login">
+                <a href="auth.html#login">
             
                     
                     로그인
@@ -153,9 +155,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.1.1.2" data-path="../account/auth.html">
+        <li class="chapter " data-level="1.2.1.1.2" data-path="auth.html">
             
-                <a href="../account/auth.html#logout">
+                <a href="auth.html#logout">
             
                     
                     로그아웃
@@ -171,9 +173,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.1.2" data-path="../account/join.html">
+        <li class="chapter active" data-level="1.2.1.2" data-path="join.html">
             
-                <a href="../account/join.html">
+                <a href="join.html">
             
                     
                     사용자 계정 생성
@@ -229,9 +231,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.2.4.1" data-path="rank.html">
+        <li class="chapter " data-level="1.2.4.1" data-path="../stats/rank.html">
             
-                <a href="rank.html">
+                <a href="../stats/rank.html">
             
                     
                     랭킹
@@ -295,7 +297,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >랭킹</a>
+        <a href="../.." >사용자 계정 생성</a>
     </h1>
 </div>
 
@@ -310,39 +312,61 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#xB7AD;&#xD0B9;">&#xB7AD;&#xD0B9;</h1>
-<p>&#xC0AC;&#xC6A9;&#xC790; &#xD3EC;&#xC778;&#xD2B8; &#xB7AD;&#xD0B9;</p>
-<h2 id="rank">Rank</h2>
+                                <h1 id="&#xC0AC;&#xC6A9;&#xC790;-&#xACC4;&#xC815;-&#xC0DD;&#xC131;">&#xC0AC;&#xC6A9;&#xC790; &#xACC4;&#xC815; &#xC0DD;&#xC131;</h1>
+<p>&#xD68C;&#xC6D0; &#xAC00;&#xC785;</p>
+<h2 id="join">Join</h2>
 <h3 id="request">Request</h3>
-<p><a href="https://dimiwords.tk:5000/api/list/rank" target="_blank">https://dimiwords.tk:5000/api/list/rank</a></p>
-<p><a href="https://dimiwords.tk:5000/api/list/rank?page=2" target="_blank">https://dimiwords.tk:5000/api/list/rank?page=2</a></p>
-<ul>
-<li><code>page</code>: &#xC870;&#xD68C;&#xD558;&#xB824;&#xB294; &#xB7AD;&#xD0B9; &#xD398;&#xC774;&#xC9C0;(&#xAE30;&#xBCF8;&#xAC12;&#xC740; 1)</li>
-</ul>
-<p>&#xC704; URL&#xB85C; &#xC11C;&#xBC84;&#xC5D0; <code>GET</code> &#xC694;&#xCCAD;&#xC744; &#xBCF4;&#xB0C5;&#xB2C8;&#xB2E4;.</p>
-<h3 id="response">Response</h3>
+<p><a href="https://dimiwords.tk:5000/api/create/user" target="_blank">https://dimiwords.tk:5000/api/create/user</a></p>
+<p>&#xC704; URL&#xB85C; &#xC11C;&#xBC84;&#xC5D0; <code>POST</code> &#xC694;&#xCCAD;&#xC744; &#xBCF4;&#xB0C5;&#xB2C8;&#xB2E4;. <code>POST</code> &#xC694;&#xCCAD;&#xC740; &#xC544;&#xB798;&#xC640; &#xAC19;&#xC740; &#xD615;&#xC2DD;&#xC758; JSON &#xB370;&#xC774;&#xD130;&#xB97C; &#xC804;&#xC1A1;&#xD569;&#xB2C8;&#xB2E4;.</p>
 <pre><code class="lang-json">{
-    <span class="hljs-string">&quot;success&quot;</span>: <span class="hljs-literal">true</span>,
-    <span class="hljs-string">&quot;result&quot;</span>: {
-        <span class="hljs-string">&quot;docs&quot;</span>: [
-            { 
-                <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;User One&quot;</span>, <span class="hljs-string">&quot;intro&quot;</span>: <span class="hljs-string">&quot;Lorem ipsum dolor sit amet&quot;</span>,
-                <span class="hljs-string">&quot;department&quot;</span>: <span class="hljs-number">3</span>, <span class="hljs-string">&quot;points&quot;</span>: <span class="hljs-number">2788</span>, <span class="hljs-string">&quot;accept&quot;</span>: <span class="hljs-number">2257</span>, <span class="hljs-string">&quot;submit&quot;</span>: <span class="hljs-number">2532</span>
-            }, {
-                <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;User Two&quot;</span>, <span class="hljs-string">&quot;intro&quot;</span>: <span class="hljs-string">&quot;Consectetur adipiscing elit&quot;</span>,
-                <span class="hljs-string">&quot;department&quot;</span>: <span class="hljs-number">2</span>, <span class="hljs-string">&quot;points&quot;</span>: <span class="hljs-number">1617</span>, <span class="hljs-string">&quot;submit&quot;</span>: <span class="hljs-number">596</span>, <span class="hljs-string">&quot;accept&quot;</span>: <span class="hljs-number">547</span>
-            },{
-                <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;User Three&quot;</span>, <span class="hljs-string">&quot;intro&quot;</span>: <span class="hljs-string">&quot;Sed do eiusmod tempor&quot;</span>,
-                <span class="hljs-string">&quot;department&quot;</span>: <span class="hljs-number">2</span>, <span class="hljs-string">&quot;points&quot;</span>: <span class="hljs-number">1201</span>, <span class="hljs-string">&quot;submit&quot;</span>: <span class="hljs-number">175</span>, <span class="hljs-string">&quot;accept&quot;</span>: <span class="hljs-number">161</span>
-            },
-            (...)
-        ],
-        <span class="hljs-string">&quot;limit&quot;</span>: <span class="hljs-number">20</span>,
-        <span class="hljs-string">&quot;page&quot;</span>: <span class="hljs-number">1</span>,
-        <span class="hljs-string">&quot;pages&quot;</span>: <span class="hljs-number">4</span>
-    }
+    <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;Civar&quot;</span>,
+    <span class="hljs-string">&quot;password&quot;</span>: <span class="hljs-string">&quot;password&quot;</span>,
+    <span class="hljs-string">&quot;email&quot;</span>: <span class="hljs-string">&quot;email@example.com&quot;</span>,
+    <span class="hljs-string">&quot;intro&quot;</span>: <span class="hljs-string">&quot;Lorem Ipsum&quot;</span>,
+    <span class="hljs-string">&quot;department&quot;</span>: <span class="hljs-number">3</span>
 }
 </code></pre>
+<ul>
+<li><code>name</code>: &#xC0AC;&#xC6A9;&#xC790; &#xC774;&#xB984;</li>
+<li><code>password</code>: &#xC0AC;&#xC6A9;&#xC790; &#xD328;&#xC2A4;&#xC6CC;&#xB4DC;</li>
+<li><code>email</code>: &#xC0AC;&#xC6A9;&#xC790; &#xC774;&#xBA54;&#xC77C;(&#xB85C;&#xADF8;&#xC778; &#xC2DC; &#xC544;&#xC774;&#xB514;&#xB85C; &#xC0AC;&#xC6A9;&#xB428;)</li>
+<li><code>intro</code>: &#xC0AC;&#xC6A9;&#xC790; &#xC18C;&#xAC1C;</li>
+<li><code>department</code>: &#xC0AC;&#xC6A9;&#xC790; &#xD559;&#xACFC;<pre><code class="lang-json">  { <span class="hljs-string">&quot;eb&quot;</span>: <span class="hljs-number">0</span>, <span class="hljs-string">&quot;dc&quot;</span>: <span class="hljs-number">1</span>, <span class="hljs-string">&quot;wp&quot;</span>: <span class="hljs-number">2</span>, <span class="hljs-string">&quot;hd&quot;</span>: <span class="hljs-number">3</span> }
+</code></pre>
+  &#xC22B;&#xC790;&#xB294; &#xAC01;&#xAC01; <code>&#xC774;&#xBE44;&#xC988;&#xB2C8;&#xC2A4;&#xACFC;</code>, <code>&#xB514;&#xC9C0;&#xD138;&#xCEE8;&#xD150;&#xCE20;&#xACFC;</code>, <code>&#xC6F9;&#xD504;&#xB85C;&#xADF8;&#xB798;&#xBC0D;&#xACFC;</code>, <code>&#xD574;&#xD0B9;&#xBC29;&#xC5B4;&#xACFC;</code>&#xC758; 4&#xAC1C; &#xD559;&#xACFC;&#xC5D0; &#xB300;&#xD55C; &#xC778;&#xB371;&#xC2A4;&#xB97C; &#xC758;&#xBBF8;&#xD569;&#xB2C8;&#xB2E4;.</li>
+</ul>
+<h3 id="response">Response</h3>
+<h4 id="success">Success</h4>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;success&quot;</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-string">&quot;error&quot;</span>: <span class="hljs-string">&quot;User saved successfully&quot;</span>
+}
+</code></pre>
+<ul>
+<li><code>success</code>: &#xC131;&#xACF5; &#xC5EC;&#xBD80;</li>
+<li><code>message</code>: &#xC131;&#xACF5; &#xBA54;&#xC138;&#xC9C0;</li>
+</ul>
+<h4 id="error">Error</h4>
+<h5 id="&#xB3D9;&#xC77C;&#xD55C;-&#xC774;&#xBA54;&#xC77C;&#xC758;-&#xC0AC;&#xC6A9;&#xC790;&#xAC00;-&#xC874;&#xC7AC;&#xD568;">&#xB3D9;&#xC77C;&#xD55C; &#xC774;&#xBA54;&#xC77C;&#xC758; &#xC0AC;&#xC6A9;&#xC790;&#xAC00; &#xC874;&#xC7AC;&#xD568;</h5>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;success&quot;</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-string">&quot;error&quot;</span>: <span class="hljs-string">&quot;User exists&quot;</span>
+}
+</code></pre>
+<ul>
+<li><code>success</code>: &#xC131;&#xACF5; &#xC5EC;&#xBD80;</li>
+<li><code>error</code>: &#xC5D0;&#xB7EC; &#xBA54;&#xC138;&#xC9C0;</li>
+</ul>
+<h5 id="&#xACC4;&#xC815;-&#xC0DD;&#xC131;-&#xC911;-&#xC11C;&#xBC84;-&#xC5D0;&#xB7EC;&#xAC00;-&#xBC1C;&#xC0DD;">&#xACC4;&#xC815; &#xC0DD;&#xC131; &#xC911; &#xC11C;&#xBC84; &#xC5D0;&#xB7EC;&#xAC00; &#xBC1C;&#xC0DD;</h5>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;success&quot;</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-string">&quot;error&quot;</span>: <span class="hljs-string">&quot;Error&quot;</span>
+}
+</code></pre>
+<ul>
+<li><code>success</code>: &#xC131;&#xACF5; &#xC5EC;&#xBD80;</li>
+<li><code>error</code>: &#xC5D0;&#xB7EC; &#xBA54;&#xC138;&#xC9C0;</li>
+</ul>
 
                                 
                                 </section>
@@ -370,6 +394,10 @@
 
             
                 
+                <a href="auth.html#logout" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 로그아웃">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
                 
             
         
@@ -378,7 +406,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"랭킹","level":"1.2.4.1","depth":3,"next":{"title":"분석","level":"1.2.4.2","depth":3,"ref":"","articles":[]},"previous":{"title":"통계","level":"1.2.4","depth":2,"ref":"","articles":[{"title":"랭킹","level":"1.2.4.1","depth":3,"path":"api/stats/rank.md","ref":"api/stats/rank.md","articles":[]},{"title":"분석","level":"1.2.4.2","depth":3,"ref":"","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"api/stats/rank.md","mtime":"2019-01-14T01:57:14.453Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-14T02:07:45.224Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"사용자 계정 생성","level":"1.2.1.2","depth":3,"next":{"title":"단어","level":"1.2.2","depth":2,"ref":"","articles":[]},"previous":{"title":"로그아웃","level":"1.2.1.1.2","depth":4,"anchor":"#logout","path":"api/account/auth.md","ref":"api/account/auth.md#logout","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"api/account/join.md","mtime":"2019-01-14T02:19:51.364Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-14T02:25:21.186Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
