@@ -1,4 +1,5 @@
-# 로그인 및 계정 인증
+# 사용자 계정 인증
+로그인 및 로그아웃
 
 ## Login
 
@@ -8,7 +9,7 @@
 
 https://dimiwords.tk:5000/api/auth/login
 
-위 URL로 서버에 POST 요청을 보냅니다. POST 요청은 아래와 같은 형식의 JSON 데이터를 전송합니다.
+위 URL로 서버에 `POST` 요청을 보냅니다. `POST` 요청은 아래와 같은 형식의 JSON 데이터를 전송합니다.
 
 ```json
 {
@@ -16,6 +17,9 @@ https://dimiwords.tk:5000/api/auth/login
     "password": "password"
 }
 ```
+
+- `email`: 사용자 이메일
+- `password`: 사용자 패스워드
 
 ### Response
 
