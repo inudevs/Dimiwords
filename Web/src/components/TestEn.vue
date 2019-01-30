@@ -24,6 +24,10 @@
         v-on:mouseover="infoHint" v-on:mouseleave="infoClear"></i>
       <i class="fas fa-times fa-3x" v-on:click="pass"
         v-on:mouseover="infoPass" v-on:mouseleave="infoClear"></i>
+      <i class="fas fa-volume-up fa-3x" v-if="this.tts" v-on:click="sound"
+        v-on:mouseover="infoSound"></i>
+      <i class="fas fa-volume-off fa-3x" v-else v-on:click="sound"
+        v-on:mouseover="infoSound"></i>
     </div>
     <div>
       <p v-if="running" id="button-info" class="new-help running">주어진 뜻에 맞는 영단어를 입력하고 엔터를 눌러주세요</p>
@@ -61,7 +65,8 @@ export default {
       words: {},
       current: {},
       progress: {},
-      running: true
+      running: true,
+      tts: true
     }
   },
   methods: {
@@ -93,21 +98,24 @@ export default {
     refresh: function () {
       this.$router.go()
     },
-    infoHint: function () {
+    info: function (info) {
       var _info = document.getElementById('button-info')
-      _info.innerHTML = '<strong>? 버튼</strong>을 누르면 힌트가 나와요'
+      _info.innerHTML = info 
+    },
+    infoHint: function () {
+      this.info('<strong>? 버튼</strong>을 누르면 힌트가 나와요')
     },
     infoPass: function () {
-      var _info = document.getElementById('button-info')
-      _info.innerHTML = '<strong>X 버튼</strong>을 누르면 모르는 단어를 패스할 수 있어요'
+      this.info('<strong>X 버튼</strong>을 누르면 모르는 단어를 패스할 수 있어요')
+    },
+    infoSound: function () {
+      this.info('<strong>스피커 버튼</strong>을 누르면 단어 발음을 켜고 끌 수 있어요')
     },
     infoRefresh: function () {
-      var _info = document.getElementById('button-info')
-      _info.innerHTML = '<strong>다시하기 버튼</strong>을 누르면 단어장을 다시 풀 수 있어요'
+      this.info('<strong>다시하기 버튼</strong>을 누르면 단어장을 다시 풀 수 있어요')
     },
     infoMenu: function () {
-      var _info = document.getElementById('button-info')
-      _info.innerHTML = '<strong>메뉴 버튼</strong>을 누르면 단어장 목록으로 돌아갈 수 있어요'
+      this.info('<strong>메뉴 버튼</strong>을 누르면 단어장 목록으로 돌아갈 수 있어요')
     },
     infoClear: function () {
       var _info = document.getElementById('button-info')
@@ -122,6 +130,7 @@ export default {
     },
     pass: function () {
       var _input = document.getElementById('guess')
+      if (this.tts) responsiveVoice.speak(this.current.en)
       _input.value = this.current.en
       _input.disabled = true
       _input.style.borderStyle = 'solid'
@@ -153,6 +162,7 @@ export default {
         .then(response => {
           console.log(response)
           if (response.data.success) {
+            if (this.tts) responsiveVoice.speak(this.current.en)
             _input.value = this.current.en
             _input.disabled = true
             _input.style.borderStyle = 'solid'
@@ -200,6 +210,9 @@ export default {
         'background-color': this.color[0],
         'background': `linear-gradient(to left, ${this.color[0]}, ${this.color[1]})`
       }
+    },
+    sound: function () {
+      this.tts = (this.tts) ? false : true
     }
   },
   props: {
@@ -214,3 +227,11 @@ export default {
   }
 }
 </script>
+
+<style>
+.fas {
+    /* width: 50px; */
+    margin: 5px;
+    color: rgb(37, 37, 37);
+}
+</style>

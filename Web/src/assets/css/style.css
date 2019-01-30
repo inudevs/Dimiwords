@@ -249,16 +249,6 @@ input[type=checkbox]{
 .wordbook-info.blue input::placeholder {
     color: rgb(85, 47, 201);
 }
-.fa-question-circle {
-    width: 50px;
-    margin: 5px;
-    color: rgb(37, 37, 37);
-}
-.fa-times {
-    width: 50px;
-    margin: 5px;
-    color: rgb(37, 37, 37);
-}
 /* join */
 .join-form input {
     color: black;
