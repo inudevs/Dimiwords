@@ -32,9 +32,10 @@ https://dimiwords.tk:5000/api/list/rank?page=2
             },
             (...)
         ],
+        "total": 89,
         "limit": 20,
         "page": 1,
-        "pages": 4
+        "pages": 5
     }
 }
 ```

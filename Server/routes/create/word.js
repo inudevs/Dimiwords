@@ -5,8 +5,9 @@ var Word = require('../../models/words.js')
 var User = require('../../models/users.js')
 
 router.post('/', (req, res) => { // add new word
-  var english = req.body.en
-  var korean = req.body.ko
+  // todo: strip
+  var english = req.body.en.toLowerCase() // to lower
+  var korean = req.body.ko.sort() // sort
   var token = req.body.token
   if (!token) {
     res.send({
@@ -41,8 +42,7 @@ router.post('/', (req, res) => { // add new word
     } else {
       var newWord = new Word({
         en: english,
-        ko: korean.sort(),
-        // sort Korean
+        ko: korean,
         userId: userId
       })
       // console.log(newWord)
