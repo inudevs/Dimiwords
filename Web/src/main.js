@@ -10,7 +10,8 @@ import ToggleButton from 'vue-js-toggle-button'
 import routes from './router'
 
 Vue.prototype.$http = axios.create({
-  baseURL: 'https://dimiwords.tk:5000/' // api server url
+  baseURL: 'http://localhost:3000/' // dev server url
+  // baseURL: 'https://dimiwords.tk:5000/' // api server url
 })
 
 Vue.config.productionTip = false

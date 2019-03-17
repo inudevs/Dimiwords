@@ -15,15 +15,9 @@
               <td class="ko">
                 {{word.ko.join(', ')}}
               </td>
+              <td><button v-on:click="speak(word.en)">발음</button></td>
             </tr>
           </table>
-        </div>
-        <div class="cell">
-          <h3>내 기여도</h3>
-          {{recents.length}}/{{wordcount}}
-        </div>
-        <div class="cell">
-          <h3>내 정답률</h3>
         </div>
       </div>
     </div>
@@ -62,13 +56,11 @@ export default {
   data () {
     return {
       token: this.$session.get('jwt'),
-      recents: [],
-      wordcount: []
+      recents: []
     }
   },
   created: function () {
     this.updateRecent()
-    this.updateWordcount()
   },
   methods: {
     updateRecent: function () {
@@ -78,16 +70,12 @@ export default {
         headers: { 'Content-type': 'application/json' }
       })
         .then((response) => {
-          console.log(response)
+          window.console.log(response)
           this.recents = response.data.recents
         })
     },
-    updateWordcount: function () {
-      this.$http.get('/api/get/stats/words')
-        .then((response) => {
-          console.log(response)
-          this.wordcount = response.data.count
-        })
+    speak: function (en) {
+      responsiveVoice.speak(en)
     }
   },
   props: {

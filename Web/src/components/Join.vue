@@ -89,7 +89,7 @@ export default {
           'intro': this.intro,
           'department': this.department
         }
-        // console.log(user);
+        // window.console.log(user);
 
         // add to DB
         this.$http.post(
@@ -97,7 +97,7 @@ export default {
             headers: { 'Content-type': 'application/json' }
           })
           .then(response => {
-            console.log(response)
+            window.console.log(response)
             if (!response.data.success) {
               if (response.data.message.includes('exist')) { alert('같은 이메일의 사용자가 이미 존재합니다.') } else alert('회원가입 도중 에러가 발생했습니다.')
               return
@@ -116,15 +116,15 @@ export default {
     selectDepartment: function (department) {
       this.department = department
       const departments = ['eb', 'dc', 'wp', 'hd']
-      for (var i = 0; i < departments.length; i++) {
-        var item = departments[i]
+      for (let i = 0; i < departments.length; i++) {
+        let item = departments[i]
         if (item !== department) { this.changeColor(document.getElementById(item + '-button')) }
       }
       var button = document.getElementById(department + '-button')
       button.style.color = 'white'
       button.style.backgroundColor = button.style.borderColor = this.colors[department]
       var elements = document.getElementsByTagName('input')
-      for (var i = 0; i < elements.length; i++) {
+      for (let i = 0; i < elements.length; i++) {
         elements[i].className = department
       }
     }

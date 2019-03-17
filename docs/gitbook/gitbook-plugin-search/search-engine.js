@@ -4,7 +4,7 @@ require([
 ], function(gitbook, $) {
     // Global search objects
     var engine      = null;
-    var initialized = false;
+    let initialized = false;
 
     // Set a new search engine
     function setEngine(Engine, config) {

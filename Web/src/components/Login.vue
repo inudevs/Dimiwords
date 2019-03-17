@@ -39,7 +39,7 @@ export default {
         password: this.password
       }).then((response) => {
         // eslint-disable-next-line
-        console.log(response)
+        window.console.log(response)
         if (response.status === 200 && response.data.success) {
           this.$session.start()
           this.$session.set('jwt', response.data.token)
@@ -52,7 +52,7 @@ export default {
         }
       }, function (err) {
         // eslint-disable-next-line
-        console.log('err', err)
+        window.console.log('err', err)
         alert('로그인 도중 에러가 발생했습니다.')
       })
     }

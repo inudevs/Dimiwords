@@ -44,7 +44,7 @@ export default {
     }
   },
   created: function () {
-    var id = this.$route.params.id
+    let id = this.$route.params.id
     this.$http.get(`/api/get/wordbook/${id}`)
       .then((response) => {
         this.wordbook = response.data.wordbook
@@ -87,7 +87,7 @@ export default {
     move: function (bar) {
       var bar = document.getElementById('bar')
       var width = 1
-      var id = setInterval((src, item) => {
+      let id = setInterval(() => {
         if (width >= 100) {
           clearInterval(id)
         } else {
@@ -134,7 +134,7 @@ export default {
       _input.value = this.current.en
       _input.disabled = true
       _input.style.borderStyle = 'solid'
-      setTimeout((src, item) => {
+      setTimeout(() => {
         _input.value = ''
         _input.disabled = false
         _input.focus()
@@ -160,14 +160,14 @@ export default {
           headers: { 'Content-type': 'application/json' }
         })
         .then(response => {
-          console.log(response)
+          window.console.log(response)
           if (response.data.success) {
             if (this.tts) responsiveVoice.speak(this.current.en)
             _input.value = this.current.en
             _input.disabled = true
             _input.style.borderStyle = 'solid'
             _input.style.borderColor = this.color[0]
-            setTimeout((src, item) => {
+            setTimeout(() => {
               _input.value = ''
               _input.disabled = false
               _input.focus()
@@ -188,7 +188,7 @@ export default {
             _input.style.color = this.color[1]
             _input.style.borderStyle = 'solid'
             _input.style.borderColor = this.color[1]
-            setTimeout((src, item) => {
+            setTimeout(() => {
               _info.innerHTML = '주어진 뜻에 맞는 영단어를 입력해 주세요'
               _input.style.color = 'black'
               _input.style.borderStyle = 'dotted'
