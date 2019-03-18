@@ -4,6 +4,10 @@ var router = express.Router()
 var User = require('../../models/users.js')
 var auth = require('../../auth.js')
 
+var scrypt = require('scryptsy')
+const secret = require('./../../secret.json')
+// scrypt(key, secret.salt, 8192, 5, 1, 25).toString('hex')
+
 // check user data and create access token
 router.post('/', (req, res) => {
   var email = req.body.email
