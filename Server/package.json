@@ -19,6 +19,7 @@
     "mongoose": "^5.4.19",
     "mongoose-paginate": "^5.0.3",
     "morgan": "^1.9.1",
+    "scryptsy": "^2.0.0",
     "uglify-js": "^3.4.10"
   }
 }

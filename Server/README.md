@@ -90,10 +90,12 @@ Todo
 ## secret.json 
 ```json
 {
-    "mongo": "mongodb://localhost:27017/words"
+    "mongo": "mongodb://localhost:27017/words",
+    "salt": "dimigo"
 }
 ```
 
 - `mongo`: mongo connection string
+- `salt`: scrypt에 사용되는 salt
 
-위 형식으로 mongo connection string을 포함하는 `secret.json` 파일을 만들어 두어야 한다.
+위 형식으로 `secret.json` 파일을 만들어 두어야 한다.
